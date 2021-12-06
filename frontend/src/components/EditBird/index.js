@@ -14,7 +14,7 @@ const EditBird = () => {
   return (
     <div className=''>
       <form>
-        <h2>Edit Bird</h2>
+        <h2>Edit specific Bird</h2>
         <label htmlFor='imageUrl' className=''>Bird Url</label>
         <input
           onChange={(e) => setImageUrl(e.target.value)}
