@@ -3,6 +3,9 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
+import FlockPage from "./components/FLockPage";
+import BirdPage from "./components/BirdPage";
+import AddBird from "./components/AddBird";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 
@@ -23,6 +26,15 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route exact path="/images">
+            <FlockPage />
+          </Route>
+          <Route path="/images/add">
+            <AddBird />
+          </Route>
+          <Route path="/images/:imageId">
+            <BirdPage />
           </Route>
         </Switch>
       )}
