@@ -1,21 +1,20 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
-const AddBird = () => {
+const EditBird = () => {
   const [imageTitle, setImageTitle] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [locationId, setLocatioId] = useState('');
   const [imageBody, setImageBody] = useState('');
-  const [userId, setUserId] = useState('')
   const [albumId, setAlbumId] = useState('');
   const [errors, setErrors] = useState([]);
   const history = useHistory();
-
+  const params = useParams();
 
   return (
     <div className=''>
       <form>
-        <h2 >Add A Bird from ^Country^</h2>
+        <h2>Edit Bird</h2>
         <label htmlFor='imageUrl' className=''>Bird Url</label>
         <input
           onChange={(e) => setImageUrl(e.target.value)}
@@ -34,11 +33,6 @@ const AddBird = () => {
           value={imageBody}
           placeholder='Bird Comments'
         />
-        <input
-          onChange={(e) => setImageBody(e.target.value)}
-          value={imageBody}
-          placeholder='Bird Comments'
-        />
         <label htmlFor='locationId' className=''>Bird Location</label>
         <select name='locationId'
           onChange={(e) => setLocatioId(e.target.value)}
@@ -52,11 +46,11 @@ const AddBird = () => {
           ))} */}
         </select>
         <div className=''>
-          <button type='submit' className=''>Submit</button>
+        <button type ='submit' className=''>Submit</button>
         </div>
       </form>
     </div>
-  );
+  )
 };
 
-export default AddBird;
+export default EditBird;

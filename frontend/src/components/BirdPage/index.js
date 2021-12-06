@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useParams, useHistory } from 'react-router';
+import { useParams, useHistory } from 'react-router-dom';
 
 const BirdPage = () => {
   const params = useParams()

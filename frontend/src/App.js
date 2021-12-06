@@ -6,6 +6,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import FlockPage from "./components/FLockPage";
 import BirdPage from "./components/BirdPage";
 import AddBird from "./components/AddBird";
+import EditBird from "./components/EditBird";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route path="/images/add">
             <AddBird />
+          </Route>
+          <Route path="/images/:imageId/edit">
+            <EditBird />
           </Route>
           <Route path="/images/:imageId">
             <BirdPage />
