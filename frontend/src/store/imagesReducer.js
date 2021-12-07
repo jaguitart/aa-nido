@@ -1,5 +1,5 @@
 const LOAD_IMAGES = 'images/LOAD_IMAGES'
-// const ADD_IMAGE = 'images/ADD_IMAGES'
+const ADD_IMAGE = 'images/ADD_IMAGES'
 // const EDIT_IMAGE = 'images/EDIT_IMAGES'
 // const REMOVE_IMAGE = 'images/REMOVE_IMAGES'
 
@@ -9,6 +9,11 @@ const loadImages = (images) => ({
   type: LOAD_IMAGES,
   images,
 });
+
+// const loadImages = (images) => ({
+//   type: LOAD_IMAGES,
+//   images,
+// });
 
 // SELECTORS
 export const getAllImages = () => async (dispatch) => {
