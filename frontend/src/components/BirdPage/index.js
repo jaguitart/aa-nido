@@ -14,7 +14,6 @@ const BirdPage = () => {
   const images = Object.values(imagesObj);
 
   const birdById = images.find(bird => +bird.id === +imageId)
-  console.log('HERE', birdById)
 
   useEffect(() => {
     dispatch(getAllImages());

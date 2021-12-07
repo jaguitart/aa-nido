@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { addBirdImages } from "../../store/imagesReducer";
+import { getAllCountries } from "../../store/locationReducer";
 
 const AddBird = () => {
   const history = useHistory();
@@ -14,6 +15,14 @@ const AddBird = () => {
   const [albumId, setAlbumId] = useState('');
   const [errors, setErrors] = useState([]);
 
+  const countriesObj = useSelector(state => state)
+  const fullState = Object.values(countriesObj)[2]
+  const countries = Object.values(fullState)
+  const countriesArray = countries.map(country => country.location )
+
+  useEffect(() => {
+    dispatch(getAllCountries());
+  }, [dispatch])
 
   //no llega a conectar con el backend
   const handleSubmit = async (e) => {
@@ -59,16 +68,16 @@ const AddBird = () => {
           placeholder='Bird Comments'
         />
         <label htmlFor='locationId' className=''>Bird Location</label>
-        <select name='locationId'
+        <select
+          name='locationId'
           onChange={(e) => setLocatioId(e.target.value)}
           value={locationId}
         >
-          {/* usar DB de locations para hacer un map y desplegar los paises
-          {COLORS.map(color => (
-            <option key={color} value={color}>
-              {color}
+          {countriesArray.map(country => (
+            <option key={country} value={country}>
+              {country}
             </option>
-          ))} */}
+          ))}
         </select>
         <div className=''>
           <button type='submit' className=''>Submit</button>
