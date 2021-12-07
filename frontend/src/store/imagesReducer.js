@@ -52,7 +52,7 @@ const imagesReducer = (state = initialState, action) => {
       //revisar
       newState = {
         ...state,
-        [action.image?.id]: action.image
+        [action.images.id]: action.images
       };
       return newState
     default:

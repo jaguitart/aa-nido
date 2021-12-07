@@ -45,7 +45,7 @@ router.post('/add', validateImage, requireAuth, asyncHandler(async (req, res) =>
     locationId,
     albumId
   })
-  return res.json(({ newBird }))
+  return res.json(newBird)
 }));
 
 
