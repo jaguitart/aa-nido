@@ -11,14 +11,14 @@ const FlockPage = () => {
 
   useEffect(() => {
     dispatch(getAllImages());
-  }, [dispatch])
+  }, [])
 
   return (
     <div>
       <h1>All Birds from a specific Region</h1>
       <div className='imgsContainer'>
         {images.map(image => (
-          <NavLink to={`images/${image.id}`} key={image.id}>
+          <NavLink to={`images/${image.id}`} key={image?.id}>
             <div className='imgContainer'>
               <img className='img' key={image.id} src={image.imageUrl} alt={image.imageTitle} />
               <p className='imgTitle'>{image.imageTitle}</p>

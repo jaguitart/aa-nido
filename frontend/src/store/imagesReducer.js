@@ -32,7 +32,6 @@ export const addBirdImages = (newBird) => async (dispatch) => {
   })
   if (res.ok) {
     const bird = await res.json();
-    console.log('*********', bird);
     dispatch(addImage(bird));
     return res;
   }
@@ -53,7 +52,7 @@ const imagesReducer = (state = initialState, action) => {
       //revisar
       newState = {
         ...state,
-        [action.image.id]: action.image
+        [action.image?.id]: action.image
       };
       return newState
     default:
