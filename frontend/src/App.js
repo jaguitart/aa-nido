@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Route, Switch } from "react-router-dom";
+import { NavLink, Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import FlockPage from "./components/FLockPage";
@@ -22,6 +22,11 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path='/'>
+            <NavLink to='/images'>
+              <p>Birds</p>
+            </NavLink>
+          </Route>
           <Route path="/login">
             <LoginFormPage />
           </Route>
