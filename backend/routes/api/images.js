@@ -9,11 +9,10 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 
 // GET IMAGES
-router.get('/', asyncHandler(async(req, res) => {
+router.get('', asyncHandler(async(req, res) => {
   const images = await Image.findAll();
-  return res.json(images)
+  res.json(images)
 }));
-
 
 
 
