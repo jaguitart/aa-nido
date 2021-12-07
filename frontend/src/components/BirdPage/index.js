@@ -29,7 +29,7 @@ const BirdPage = () => {
         <img className='imgSingleBird' key={birdById?.id} src={birdById?.imageUrl} alt={birdById?.imageTitle} />
         <div className='textDiv'>
           <p className='title'>{birdById?.imageTitle}</p>
-          {/* <p className='location'>{birdById?.Location.location}</p> */}
+          <p className='location'>{birdById?.Location.location}</p>
           <p className='body'>{birdById?.imageBody}</p>
         </div>
       </div>
