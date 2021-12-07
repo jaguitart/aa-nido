@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/jaguitart/w16project/issues"
   },
-  "homepage": "https://github.com/jaguitart/w16project#readme"
+  "homepage": "https://github.com/jaguitart/w16project#readme",
+  "dependencies": {
+    "react-country-region-selector": "^3.4.0"
+  }
 }

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, Component } from "react";
+import { CountryDropdown } from "react-country-region-selector";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import './SignupForm.css';
@@ -55,12 +56,15 @@ function SignupFormPage() {
       </label>
       <label>
         Country
-        <input
+        {/* <input
           type="text"
           value={country}
           onChange={(e) => setCountry(e.target.value)}
           required
-        />
+        /> */}
+        <CountryDropdown
+          value={country}
+          onChange={(e) => setCountry(e)} />
       </label>
       <label>
         Password
