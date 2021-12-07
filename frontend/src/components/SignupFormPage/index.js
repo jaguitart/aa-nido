@@ -56,12 +56,6 @@ function SignupFormPage() {
       </label>
       <label>
         Country
-        {/* <input
-          type="text"
-          value={country}
-          onChange={(e) => setCountry(e.target.value)}
-          required
-        /> */}
         <CountryDropdown
           value={country}
           onChange={(e) => setCountry(e)} />
