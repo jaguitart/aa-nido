@@ -31,6 +31,9 @@ const BirdPage = () => {
       <NavLink to='/images'>
         <p>Back</p>
       </NavLink>
+      <NavLink to={`/images/${imageId}/edit`}>
+        <p>Edit</p>
+      </NavLink>
       <button onClick={() => handleRemove(imageId)}>
         DELETE
       </button>
