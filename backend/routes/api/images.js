@@ -67,8 +67,8 @@ const validateEdit = [
 
 
 router.put('/:id/edit', validateEdit, requireAuth, asyncHandler(async (req, res) => {
-  const { imageTitle, imageBody, locationId} = req.body;
-  const {id} = req.params;
+  const { imageTitle, imageBody, locationId } = req.body;
+  const { id } = req.params;
   const editImage = await Image.findByPk(id)
   //agregar la validacion
   await editImage.update({
@@ -78,6 +78,18 @@ router.put('/:id/edit', validateEdit, requireAuth, asyncHandler(async (req, res)
   })
   const editedImage = await Image.findByPk(id);
   return res.json()
+}));
+
+
+//DELETE
+
+router.delete('/:id/delete', requireAuth, asyncHandler(async (req, res) => {
+  console.log('************CONSOLE LOG');
+  const { id } = req.params;
+  const deleteImage = await Image.findByPk(id);
+  
+  await Image.destroy({ where: {id: deleteImage.id}});
+  return res.json(deleteImage);
 }));
 
 

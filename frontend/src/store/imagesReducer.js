@@ -3,7 +3,7 @@ import { csrfFetch } from './csrf';
 const LOAD_IMAGES = 'images/LOAD_IMAGES'
 const ADD_IMAGE = 'images/ADD_IMAGE'
 const EDIT_IMAGE = 'images/EDIT_IMAGES'
-// const REMOVE_IMAGE = 'images/REMOVE_IMAGES'
+const REMOVE_IMAGE = 'images/REMOVE_IMAGE'
 
 
 // ACTIONS
@@ -17,10 +17,10 @@ const addImage = images => ({
   images,
 });
 
-const editImage = image => ({
-  type: EDIT_IMAGE,
-  image,
-})
+const removeImage = images => ({
+  type: REMOVE_IMAGE,
+  images,
+});
 
 // SELECTORS
 export const getAllImages = () => async (dispatch) => {
@@ -42,20 +42,24 @@ export const addBirdImages = (newBird) => async (dispatch) => {
   }
 }
 
-export const editBirdImage = (id, editedBird) => async (dispatch) => {
-  const { userId, albumId, imageTitle, iamgeBody, locationId } = editedBird
+export const editBirdImage = (id, editedBird) => async () => {
   const res = await csrfFetch(`/api/images/${id}/edit`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(editedBird)
   })
-  // if (res.ok) {
-  //   const editedbird = await res.json();
-  //   dispatch(addImage(editedbird()));
-  //   return res;
-  // }
 }
 
+
+export const removeBirdImage = (id) => async (dispatch) => {
+  // console.log('AQUI', id)
+  const res = await csrfFetch(`/api/images/${id}/delete`, {
+    method: 'DELETE'
+  });
+  if (res.ok) {
+  dispatch(removeImage(id))
+  }
+}
 
 //INITIAL STATE
 const initialState = {};
@@ -78,6 +82,10 @@ const imagesReducer = (state = initialState, action) => {
       state[action.images.id] = action.image;
       newState = { ...state };
       return newState
+    case REMOVE_IMAGE:
+      newState = { ...state };
+      delete newState[action.images];
+      return newState;
     default:
       return state;
   }

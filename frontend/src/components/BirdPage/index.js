@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux"
 import { useParams, useHistory, NavLink } from 'react-router-dom';
-import { getAllImages } from "../../store/imagesReducer";
+import { getAllImages, removeBirdImage } from "../../store/imagesReducer";
 import './BirdPage.css';
 
 const BirdPage = () => {
@@ -19,11 +19,21 @@ const BirdPage = () => {
     dispatch(getAllImages());
   }, [dispatch])
 
+
+  const handleRemove = (id) => {
+    dispatch(removeBirdImage(id))
+    .then(() => {history.push('/images')})
+  }
+
+
   return (
     <div>
       <NavLink to='/images'>
         <p>Back</p>
       </NavLink>
+      <button onClick={() => handleRemove(imageId)}>
+        DELETE
+      </button>
       <div className='imgSingleDiv'>
         <img className='imgSingleBird' key={birdById?.id} src={birdById?.imageUrl} alt={birdById?.imageTitle} />
         <div className='textDiv'>
