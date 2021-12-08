@@ -48,10 +48,29 @@ router.post('/add', validateImage, requireAuth, asyncHandler(async (req, res) =>
 }));
 
 // EDIT/PUT IMAGES
-//revisar que entrega el req.body para armar el res.json
-router.put('/:id(\\d+)/edit', validateImage, requireAuth, asyncHandler(async (req, res) => {
-  console.log(req.body)
+const validateEdit = [
+  check('imageTitle')
+    .exists({ checkFalsy: true })
+    .isLength({ min: 3, max: 200 })
+    .withMessage('Please provide a title.'),
+  check('imageBody')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a text body.')
+    .isLength({ min: 3, max: 5000 })
+    .withMessage('Please provide a text body with length between 3 to 5000 characters.'),
+  check('locationId')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a valid location into the options.'),
+  handleValidationErrors
+
+];
+
+
+router.put('/:id/edit', validateEdit, requireAuth, asyncHandler(async (req, res) => {
+  console.log(req.body);
 }));
 
 
 module.exports = router;
+
+

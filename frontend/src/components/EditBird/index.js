@@ -8,7 +8,7 @@ import { getAllCountries } from "../../store/locationReducer";
 const EditBird = () => {
   const [imageTitle, setImageTitle] = useState('');
   // const [imageUrl, setImageUrl] = useState('');
-  const [locationId, setLocatioId] = useState('');
+  const [locationId, setLocatioId] = useState(1);
   const [imageBody, setImageBody] = useState('');
   // const [albumId, setAlbumId] = useState('');
   const [errors, setErrors] = useState([]);
@@ -53,14 +53,15 @@ const EditBird = () => {
       imageBody,
       locationId
     }
-    return dispatch(editBirdImage(birdEdited))
+
+    return dispatch(editBirdImage(birdByIdToEdit.id,birdEdited))
   }
 
 
 
   return (
     <div className=''>
-      <form>
+      <form onSubmit={handleSubmit}>
         <h2>Edit specific Bird</h2>
         <label htmlFor='imageTitle' className=''>Bird Name</label>
         <input

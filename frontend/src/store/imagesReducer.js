@@ -42,17 +42,18 @@ export const addBirdImages = (newBird) => async (dispatch) => {
   }
 }
 
-export const editBirdImage = (editedBird) => async (dispatch) => {
-  const res = await csrfFetch('/api/images/{id}}', {
+export const editBirdImage = (id, editedBird) => async (dispatch) => {
+  const { userId, albumId, imageTitle, iamgeBody, locationId } = editedBird
+  const res = await csrfFetch(`/api/images/${id}/edit`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(editedBird)
   })
-  if (res.ok) {
-    const editedbird = await res.json();
-    dispatch(addImage(editedbird));
-    return res;
-  }
+  // if (res.ok) {
+  //   const editedbird = await res.json();
+  //   dispatch(addImage(editedbird()));
+  //   return res;
+  // }
 }
 
 
