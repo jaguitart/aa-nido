@@ -34,7 +34,7 @@ export const addBirdImages = (newBird) => async (dispatch) => {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(newBird)
-  })
+  });
   if (res.ok) {
     const bird = await res.json();
     dispatch(addImage(bird));

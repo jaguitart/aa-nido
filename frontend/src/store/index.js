@@ -3,12 +3,14 @@ import thunk from "redux-thunk";
 import sessionReducer from './session';
 import imagesReducer from './imagesReducer';
 import countriesReducer from './locationReducer';
+import commentsReducer from "./commentsReducer";
 
 const rootReducer = combineReducers({
   session: 
   sessionReducer,
   imagesReducer,
-  countriesReducer
+  countriesReducer,
+  commentsReducer
 });
 
 let enhancer;
