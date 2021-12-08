@@ -10,7 +10,7 @@ const AddBird = () => {
   const sessionUser = useSelector(state => state.session.user);
   const [imageTitle, setImageTitle] = useState('');
   const [imageUrl, setImageUrl] = useState('');
-  const [locationId, setLocatioId] = useState('');
+  const [locationId, setLocatioId] = useState(1);
   const [imageBody, setImageBody] = useState('');
   const [albumId, setAlbumId] = useState('');
   const [errors, setErrors] = useState([]);
@@ -43,6 +43,7 @@ const AddBird = () => {
       userId: sessionUser.id,
       albumId: sessionUser.id
     };
+    console.log('NEWBIRDDDDDDDDDDDDDDDDDDD', newBird)
 
 
     if (newBird) {

@@ -12,9 +12,9 @@ const loadImages = images => ({
   images,
 });
 
-const addImage = image => ({
+const addImage = images => ({
   type: ADD_IMAGE,
-  image,
+  images,
 });
 
 const editImage = image => ({
