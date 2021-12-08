@@ -82,17 +82,12 @@ router.put('/:id/edit', validateEdit, requireAuth, asyncHandler(async (req, res)
 
 
 //DELETE
-
 router.delete('/:id/delete', requireAuth, asyncHandler(async (req, res) => {
-  console.log('************CONSOLE LOG');
   const { id } = req.params;
   const deleteImage = await Image.findByPk(id);
-  
-  await Image.destroy({ where: {id: deleteImage.id}});
+  deleteImage.destroy();
   return res.json(deleteImage);
 }));
 
 
 module.exports = router;
-
-

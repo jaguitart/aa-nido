@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
     Image.belongsTo(models.User, { foreignKey: 'userId' });
     Image.belongsTo(models.Album, { foreignKey: 'albumId' });
     Image.belongsTo(models.Location, { foreignKey: 'locationId' });
-    Image.hasMany(models.Comment, { foreignKey: 'commentId' });
+    Image.hasMany(models.Comment, { foreignKey: 'imageId', onDelete: 'CASCADE', hooks: true});
   };
   return Image;
 };
