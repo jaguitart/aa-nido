@@ -10,9 +10,9 @@ const AddBird = () => {
   const sessionUser = useSelector(state => state.session.user);
   const [imageTitle, setImageTitle] = useState('');
   const [imageUrl, setImageUrl] = useState('');
-  const [locationId, setLocatioId] = useState(1);
+  const [locationId, setLocatioId] = useState('');
   const [imageBody, setImageBody] = useState('');
-  const [albumId, setAlbumId] = useState(1);
+  const [albumId, setAlbumId] = useState('');
   const [errors, setErrors] = useState([]);
 
   const countriesObj = useSelector(state => state)
@@ -33,14 +33,15 @@ const AddBird = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
+//HAY QUE PROBAR SI ESTO MANDA LA INFORMACION NECESARIA PARA EL REDUCER
     const newBird = {
       imageTitle,
       imageUrl,
       locationId,
       imageBody,
       userId: sessionUser.id,
-      albumId
+      albumId: sessionUser.id
     };
 
 

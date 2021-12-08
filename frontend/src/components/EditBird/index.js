@@ -1,26 +1,67 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams } from "react-router-dom";
+import { editBirdImage } from "../../store/imagesReducer";
+import { getAllImages } from "../../store/imagesReducer";
+import { getAllCountries } from "../../store/locationReducer";
 
 const EditBird = () => {
   const [imageTitle, setImageTitle] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
+  // const [imageUrl, setImageUrl] = useState('');
   const [locationId, setLocatioId] = useState('');
   const [imageBody, setImageBody] = useState('');
-  const [albumId, setAlbumId] = useState('');
+  // const [albumId, setAlbumId] = useState('');
   const [errors, setErrors] = useState([]);
   const history = useHistory();
+  const dispatch = useDispatch()
   const params = useParams();
+  const { imageId } = params
+
+  const sessionUser = useSelector(state => state.session.user);
+
+  const countriesObj = useSelector(state => state)
+  const fullState = Object.values(countriesObj)[2]
+  const countries = Object.values(fullState)
+
+  let countriesArrIdLocation = []
+  for (let i = 0; i < countries.length; i++) {
+    let obj = {}
+    obj['id'] = countries[i].id
+    obj['location'] = countries[i].location
+    countriesArrIdLocation.push(obj)
+  }
+
+  useEffect(() => {
+    dispatch(getAllCountries());
+  }, [dispatch])
+
+  const imagesObj = useSelector(state => state.imagesReducer);
+  const images = Object.values(imagesObj);
+
+  const birdByIdToEdit = images.find(bird => +bird.id === +imageId)
+
+  useEffect(() => {
+    dispatch(getAllImages());
+  }, [dispatch])
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const birdEdited = {
+      userId: sessionUser.id,
+      albumId: sessionUser.id,
+      imageTitle,
+      imageBody,
+      locationId
+    }
+    return dispatch(editBirdImage(birdEdited))
+  }
+
+
 
   return (
     <div className=''>
       <form>
         <h2>Edit specific Bird</h2>
-        <label htmlFor='imageUrl' className=''>Bird Url</label>
-        <input
-          onChange={(e) => setImageUrl(e.target.value)}
-          value={imageUrl}
-          placeholder='Bird Url'
-        />
         <label htmlFor='imageTitle' className=''>Bird Name</label>
         <input
           onChange={(e) => setImageTitle(e.target.value)}
@@ -34,19 +75,19 @@ const EditBird = () => {
           placeholder='Bird Comments'
         />
         <label htmlFor='locationId' className=''>Bird Location</label>
-        <select name='locationId'
+        <select
+          name='locationId'
           onChange={(e) => setLocatioId(e.target.value)}
           value={locationId}
         >
-          {/* usar DB de locations para hacer un map y desplegar los paises
-          {COLORS.map(color => (
-            <option key={color} value={color}>
-              {color}
+          {countriesArrIdLocation.map(country => (
+            <option key={country.id} value={country.id}>
+              {country.location}
             </option>
-          ))} */}
+          ))}
         </select>
         <div className=''>
-        <button type ='submit' className=''>Submit</button>
+          <button type='submit' className=''>Submit</button>
         </div>
       </form>
     </div>

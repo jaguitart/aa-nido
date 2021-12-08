@@ -35,7 +35,6 @@ const validateImage = [
 
 router.post('/add', validateImage, requireAuth, asyncHandler(async (req, res) => {
   const { imageUrl, imageTitle, imageBody, locationId, albumId } = req.body
-  console.log(req.body);
   //if de la validacion
   const newBird = await Image.create({
     userId: req.body.userId,
@@ -46,6 +45,12 @@ router.post('/add', validateImage, requireAuth, asyncHandler(async (req, res) =>
     albumId
   })
   return res.json(newBird)
+}));
+
+// EDIT/PUT IMAGES
+//revisar que entrega el req.body para armar el res.json
+router.put('/:id(\\d+)/edit', validateImage, requireAuth, asyncHandler(async (req, res) => {
+  console.log(req.body)
 }));
 
 
