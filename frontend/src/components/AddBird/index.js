@@ -43,8 +43,6 @@ const AddBird = () => {
       userId: sessionUser.id,
       albumId: sessionUser.id
     };
-    console.log('NEWBIRDDDDDDDDDDDDDDDDDDD', newBird)
-
 
     if (newBird) {
       history.push(`/images`);

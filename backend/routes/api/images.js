@@ -67,7 +67,17 @@ const validateEdit = [
 
 
 router.put('/:id/edit', validateEdit, requireAuth, asyncHandler(async (req, res) => {
-  console.log(req.body);
+  const { imageTitle, imageBody, locationId} = req.body;
+  const {id} = req.params;
+  const editImage = await Image.findByPk(id)
+  //agregar la validacion
+  await editImage.update({
+    imageTitle,
+    imageBody,
+    locationId
+  })
+  const editedImage = await Image.findByPk(id);
+  return res.json()
 }));
 
 

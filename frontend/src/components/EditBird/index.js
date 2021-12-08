@@ -54,7 +54,8 @@ const EditBird = () => {
       locationId
     }
 
-    return dispatch(editBirdImage(birdByIdToEdit.id,birdEdited))
+    dispatch(editBirdImage(birdByIdToEdit.id, birdEdited))
+    .then(() => {history.push(`/images/${birdByIdToEdit.id}`)})
   }
 
 
