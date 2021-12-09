@@ -41,7 +41,7 @@ const AddBird = () => {
       locationId,
       imageBody,
       userId: sessionUser.id,
-      albumId: sessionUser.id
+      albumId: 1
     };
 
     return dispatch(addBirdImages(newBird))
