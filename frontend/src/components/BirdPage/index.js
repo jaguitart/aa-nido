@@ -19,10 +19,6 @@ const BirdPage = () => {
   const commentsObj = useSelector(state => state.commentsReducer);
   const comments = Object.values(commentsObj)
   const commentsForThisImage = comments.filter((comment) => +comment.id === +imageId)
-  console.log('*************', commentsForThisImage);
-
-  // const birdById = comments
-  //USAR FIND PARA TENER SOLO LOS COMENTARIOS ASOCIADOS A ESTA IMAGEN.
 
   useEffect(() => {
     dispatch(getAllImages());
@@ -50,7 +46,7 @@ const BirdPage = () => {
         <img className='imgSingleBird' key={birdById?.id} src={birdById?.imageUrl} alt={birdById?.imageTitle} />
         <div className='textDiv'>
           <p className='title'>{birdById?.imageTitle}</p>
-          <p className='location'>{birdById?.Location.location}</p>
+          <p className='location'>{birdById?.Location?.location}</p>
           <p className='body'>{birdById?.imageBody}</p>
         </div>
       </div>
