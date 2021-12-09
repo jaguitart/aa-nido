@@ -36,5 +36,31 @@ router.post('/:id/addComment', validateComment, requireAuth, asyncHandler(async 
   return res.json(newComment);
 }));
 
+// // EDIT/PUT COMMENTS
+// router.put('/:id/addComment/:commentId/edit', validateComment, requireAuth, asyncHandler(async (req, res) => {
+//   const { imageTitle, imageBody, locationId } = req.body;
+//   const { commentId } = req.params;
+//   const editComment = await Comment.findByPk(commentId)
+//   //agregar la validacion
+//   await editComment.update({
+//     userId,
+//     imageId,
+//     commentHeader,
+//     commentBody
+//   })
+//   const editComment = await Comment.findByPk(commentId);
+//   return res.json()
+// }));
+
+
+// //DELETE COMMENTS
+router.delete('/:commentId/delete', requireAuth, asyncHandler(async (req, res) => {
+  const { commentId } = req.params;
+  const deleteComment = await Comment.findByPk(commentId);
+  deleteComment.destroy();
+  return res.json(deleteComment);
+}));
+
+
 
 module.exports = router;

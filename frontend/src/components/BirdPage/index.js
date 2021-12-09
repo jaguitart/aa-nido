@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { useParams, useHistory, NavLink } from 'react-router-dom';
 import { getAllImages, removeBirdImage } from "../../store/imagesReducer";
 import { getComments } from "../../store/commentsReducer";
-import { addAComment } from "../../store/commentsReducer";
+import { addAComment, removeAComment } from "../../store/commentsReducer";
 import './BirdPage.css';
 
 const BirdPage = () => {
@@ -38,14 +38,14 @@ const BirdPage = () => {
   }
 
   //comments box function
-  const reset =() =>{
+  const reset = () => {
     setCommentHeader('')
     setCommentBody('')
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newComment = { 
-      userId: sessionUser.id, 
+    const newComment = {
+      userId: sessionUser.id,
       imageId,
       commentHeader,
       commentBody,
@@ -55,6 +55,10 @@ const BirdPage = () => {
     reset()
   };
 
+  const handleDelete = (id) => {
+    dispatch(removeAComment(id));
+    history.push(`/images/${imageId}`);
+  }
 
   return (
     <div>
@@ -78,29 +82,36 @@ const BirdPage = () => {
       <div className='commentsDiv'>
         {commentsForThisImage.map(comment =>
           <div key={comment?.id}>
-            <p  className=''>{comment?.commentHeader}</p>
+            <p className=''>{comment?.commentHeader}</p>
             <p className=''>{comment?.commentBody}</p>
+            <p>{sessionUser && sessionUser.id === comment?.userId &&
+              <button onClick={() => handleDelete(comment?.id)} className=''>
+                Delete
+              </button>
+            }</p>
           </div>
         )}
       </div>
-      <form onSubmit={handleSubmit} className=''>
-        {/* <ul className=''>
+      {sessionUser &&
+        <form onSubmit={handleSubmit} className=''>
+          {/* <ul className=''>
           {errors.map((error, idx) => <li key={idx} className='loginErrors'>{error}</li>)}
         </ul> */}
-        <input
-          onChange={(e) => setCommentHeader(e.target.value)}
-          value={commentHeader}
-          placeholder='Header comment here...'
-        />
-        <input
-          onChange={(e) => setCommentBody(e.target.value)}
-          value={commentBody}
-          placeholder='Body comment here...'
-        />
-        <div className=''>
-          <button type='submit' className=''>Submit</button>
-        </div>
-      </form>
+          <input
+            onChange={(e) => setCommentHeader(e.target.value)}
+            value={commentHeader}
+            placeholder='Header comment here...'
+          />
+          <input
+            onChange={(e) => setCommentBody(e.target.value)}
+            value={commentBody}
+            placeholder='Body comment here...'
+          />
+          <div className=''>
+            <button type='submit' className=''>Submit</button>
+          </div>
+        </form>
+      }
     </div>
   )
 }

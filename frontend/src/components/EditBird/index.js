@@ -18,8 +18,10 @@ const EditBird = () => {
   const { imageId } = params
 
   const sessionUser = useSelector(state => state.session.user);
-
+  
   const countriesObj = useSelector(state => state)
+  console.log('ESTADO', countriesObj);
+
   const fullState = Object.values(countriesObj)[2]
   const countries = Object.values(fullState)
 
