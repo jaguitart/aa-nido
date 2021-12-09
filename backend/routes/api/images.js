@@ -18,24 +18,26 @@ router.get('', asyncHandler(async (req, res) => {
 
 // ADD/POST IMAGES
 const validateImage = [
+  //se puede checkea si url es valido?
+  check('imageUrl')
+    .isURL({ require_protocol: false, require_host: false })
+    .withMessage('Please provide a valid Url.'),
   check('imageTitle')
     .exists({ checkFalsy: true })
-    .isLength({ min: 3, max: 200 })
-    .withMessage('Please provide a title.'),
-  check('imageUrl')
-    .exists({ checkFalsy: true })
-    .withMessage('Please provide a url.'),
-  //se puede checkea si url es valido?
+    .withMessage('Please provide a bird name.')
+    .isLength({ max: 200 })
+    .withMessage('Bird name with max length 200 characters.'),
   check('imageBody')
     .exists({ checkFalsy: true })
-    .isLength({ min: 3, max: 5000 })
-    .withMessage('Please provide a valid email or username.'),
+    .withMessage('Please provide a valid bird description.')
+    .isLength({ max: 5000 })
+    .withMessage('Please provide a valid bird description with max length 5000 characters.'),
   handleValidationErrors
 ];
 
 router.post('/add', validateImage, requireAuth, asyncHandler(async (req, res) => {
   const { imageUrl, imageTitle, imageBody, locationId, albumId } = req.body
-  //if de la validacion
+
   const newBird = await Image.create({
     userId: req.body.userId,
     imageUrl,
@@ -51,18 +53,15 @@ router.post('/add', validateImage, requireAuth, asyncHandler(async (req, res) =>
 const validateEdit = [
   check('imageTitle')
     .exists({ checkFalsy: true })
-    .isLength({ min: 3, max: 200 })
-    .withMessage('Please provide a title.'),
+    .withMessage('Please provide a bird name.')
+    .isLength({ max: 200 })
+    .withMessage('Bird name with max length 200 characters.'),
   check('imageBody')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide a text body.')
-    .isLength({ min: 3, max: 5000 })
-    .withMessage('Please provide a text body with length between 3 to 5000 characters.'),
-  check('locationId')
-    .exists({ checkFalsy: true })
-    .withMessage('Please provide a valid location into the options.'),
+    .withMessage('Please provide a valid bird description.')
+    .isLength({ max: 5000 })
+    .withMessage('Please provide a valid bird description with max length 5000 characters.'),
   handleValidationErrors
-
 ];
 
 
@@ -70,14 +69,14 @@ router.put('/:id/edit', validateEdit, requireAuth, asyncHandler(async (req, res)
   const { imageTitle, imageBody, locationId } = req.body;
   const { id } = req.params;
   const editImage = await Image.findByPk(id)
-  //agregar la validacion
+
   await editImage.update({
     imageTitle,
     imageBody,
     locationId
   })
   const editedImage = await Image.findByPk(id);
-  return res.json()
+  return res.json(editedImage)
 }));
 
 

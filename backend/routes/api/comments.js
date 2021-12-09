@@ -16,9 +16,9 @@ router.get('', asyncHandler(async (req, res) => {
 const validateComment = [
   check('commentHeader')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide a comment header.')
-    .isLength({ min: 1, max: 300 })
-    .withMessage('Please provide a comment with a length between 1 to 300 characters.'),
+    .withMessage('Please provide a comment title.')
+    .isLength({ max: 300 })
+    .withMessage('Please provide a comment with max length 300 characters.'),
   check('commentBody')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a comment body.'),
