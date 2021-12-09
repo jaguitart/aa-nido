@@ -66,7 +66,7 @@ const AddBird = () => {
       <form onSubmit={handleSubmit}>
         <h2 >Add A Bird</h2>
         <ul className='loginErrorsList'>
-          {errors.map((error) => <li key={errors.indexOf(error)} className='loginErrors'>{error}</li>)}
+          {errors.map((error) => <li key={errors?.indexOf(error)} className='loginErrors'>{error}</li>)}
         </ul>
         <label htmlFor='imageUrl' className=''>Bird Url</label>
         <input
