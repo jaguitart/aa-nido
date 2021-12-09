@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler');
 const { requireAuth } = require('../../utils/auth')
 const { Image, Location } = require('../../db/models');
 
-const { check } = require('express-validator');
+const { check, validationResult } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 
@@ -38,6 +38,9 @@ const validateImage = [
 router.post('/add', validateImage, requireAuth, asyncHandler(async (req, res) => {
   const { imageUrl, imageTitle, imageBody, locationId, albumId } = req.body
 
+  const validationErrors = validationResult(req);
+
+  if(validationErrors.isEmpty()){
   const newBird = await Image.create({
     userId: req.body.userId,
     imageUrl,
@@ -47,6 +50,10 @@ router.post('/add', validateImage, requireAuth, asyncHandler(async (req, res) =>
     albumId
   })
   return res.json(newBird)
+} else {
+  const errors = validationErrors.Array().map((err) => err.msg);
+  return res.json(errors);
+}
 }));
 
 // EDIT/PUT IMAGES
