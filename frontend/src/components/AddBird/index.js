@@ -41,6 +41,7 @@ const AddBird = () => {
       locationId,
       imageBody,
       userId: sessionUser.id,
+      //hardcoded until feature creation
       albumId: 1
     };
 
