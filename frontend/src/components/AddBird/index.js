@@ -93,8 +93,8 @@ const AddBird = () => {
           value={locationId}
         >
           {countriesArrIdLocation.map(country => (
-            <option key={country.id} value={country.id}>
-              {country.location}
+            <option key={country?.id} value={country?.id}>
+              {country?.location}
             </option>
           ))}
         </select>
