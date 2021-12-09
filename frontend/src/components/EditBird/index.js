@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, Redirect } from "react-router-dom";
 import { editBirdImage } from "../../store/imagesReducer";
 import { getAllImages } from "../../store/imagesReducer";
 import { getAllCountries } from "../../store/locationReducer";
 
 const EditBird = () => {
   const [imageTitle, setImageTitle] = useState('');
-  // const [imageUrl, setImageUrl] = useState('');
   const [locationId, setLocatioId] = useState(1);
   const [imageBody, setImageBody] = useState('');
   // const [albumId, setAlbumId] = useState('');
@@ -18,9 +17,8 @@ const EditBird = () => {
   const { imageId } = params
 
   const sessionUser = useSelector(state => state.session.user);
-  
+
   const countriesObj = useSelector(state => state)
-  console.log('ESTADO', countriesObj);
 
   const fullState = Object.values(countriesObj)[2]
   const countries = Object.values(fullState)
@@ -40,7 +38,7 @@ const EditBird = () => {
   const imagesObj = useSelector(state => state.imagesReducer);
   const images = Object.values(imagesObj);
 
-  const birdByIdToEdit = images.find(bird => +bird.id === +imageId)
+  const birdByIdToEdit = images.find(bird => +bird?.id === +imageId)
 
   useEffect(() => {
     dispatch(getAllImages());
@@ -57,15 +55,31 @@ const EditBird = () => {
     }
 
     dispatch(editBirdImage(birdByIdToEdit.id, birdEdited))
-    .then(() => {history.push(`/images/${birdByIdToEdit.id}`)})
+      .then(res => {
+        if (res.ok) {
+          console.log('hi2')
+          setErrors([]);
+          history.push(`/images/${birdByIdToEdit.id}`)
+        }
+      })
+      .catch(async res => {
+        const info = await res.json();
+        setErrors(info.errors)
+        console.log(info.errors);
+      })
   }
 
-
+  if (!sessionUser) return (
+    <Redirect to="/" />
+  );
 
   return (
     <div className=''>
       <form onSubmit={handleSubmit}>
         <h2>Edit specific Bird</h2>
+        <ul className='loginErrorsList'>
+          {errors.map((error) => <li key={errors.indexOf(error)} className='loginErrors'>{error}</li>)}
+        </ul>
         <label htmlFor='imageTitle' className=''>Bird Name</label>
         <input
           onChange={(e) => setImageTitle(e.target.value)}

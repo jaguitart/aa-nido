@@ -17,6 +17,11 @@ const addImage = images => ({
   images,
 });
 
+const editImage = images => ({
+  type: EDIT_IMAGE,
+  images,
+});
+
 const removeImage = images => ({
   type: REMOVE_IMAGE,
   images,
@@ -42,12 +47,17 @@ export const addBirdImages = (newBird) => async (dispatch) => {
   }
 }
 
-export const editBirdImage = (id, editedBird) => async () => {
+export const editBirdImage = (id, editedBird) => async (dispatch) => {
   const res = await csrfFetch(`/api/images/${id}/edit`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(editedBird)
   })
+  if(res.ok){
+    const bird = await res.json();
+    dispatch(editImage(bird));
+    return res;
+  }
 }
 
 

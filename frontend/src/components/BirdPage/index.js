@@ -21,7 +21,8 @@ const BirdPage = () => {
   const imagesObj = useSelector(state => state.imagesReducer);
   const images = Object.values(imagesObj);
 
-  const birdById = images.find(bird => +bird.id === +imageId);
+
+  const birdById = images.find(bird => +bird?.id === +imageId);
 
   const commentsObj = useSelector(state => state.commentsReducer);
   const comments = Object.values(commentsObj)
@@ -37,12 +38,11 @@ const BirdPage = () => {
       .then(() => { history.push('/images') })
   }
 
-  //comments box function
   const reset = () => {
     setCommentHeader('')
     setCommentBody('')
   }
-  const handleSubmit = (e) => {
+  const handleComment = (e) => {
     e.preventDefault();
     const newComment = {
       userId: sessionUser.id,
@@ -51,8 +51,16 @@ const BirdPage = () => {
       commentBody,
     };
     dispatch(addAComment(newComment))
-    // .then(() => {history.push(`/images/${imageId}`)})
-    reset()
+      .then(res => {
+        if (res.ok) {
+          setErrors([])
+          reset()
+        }
+      })
+      .catch(async res => {
+        const info = await res.json();
+        setErrors(info.errors)
+      })
   };
 
   const handleDelete = (id) => {
@@ -65,12 +73,16 @@ const BirdPage = () => {
       <NavLink to='/images'>
         <p>Back</p>
       </NavLink>
-      <NavLink to={`/images/${imageId}/edit`}>
-        <p>Edit</p>
-      </NavLink>
-      <button onClick={() => handleRemove(imageId)}>
-        DELETE
-      </button>
+      {sessionUser && sessionUser.id === birdById?.userId &&
+        <NavLink to={`/images/${imageId}/edit`}>
+          <p>Edit</p>
+        </NavLink>
+      }
+      {sessionUser && sessionUser.id === birdById?.userId &&
+        <button onClick={() => handleRemove(imageId)}>
+          DELETE
+        </button>
+      }
       <div className='imgSingleDiv'>
         <img className='imgSingleBird' key={birdById?.id} src={birdById?.imageUrl} alt={birdById?.imageTitle} />
         <div className='textDiv'>
@@ -93,10 +105,10 @@ const BirdPage = () => {
         )}
       </div>
       {sessionUser &&
-        <form onSubmit={handleSubmit} className=''>
-          {/* <ul className=''>
-          {errors.map((error, idx) => <li key={idx} className='loginErrors'>{error}</li>)}
-        </ul> */}
+        <form onSubmit={handleComment} className=''>
+          <ul className=''>
+            {errors.map((error) => <li key={errors.indexOf(error)} className='loginErrors'>{error}</li>)}
+          </ul>
           <input
             onChange={(e) => setCommentHeader(e.target.value)}
             value={commentHeader}

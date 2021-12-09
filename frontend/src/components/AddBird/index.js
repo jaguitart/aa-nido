@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { addBirdImages } from "../../store/imagesReducer";
 import { getAllCountries } from "../../store/locationReducer";
+import { Redirect } from "react-router-dom";
 
 const AddBird = () => {
   const history = useHistory();
@@ -43,16 +44,30 @@ const AddBird = () => {
       albumId: sessionUser.id
     };
 
-    if (newBird) {
-      history.push(`/images`);
-    }
     return dispatch(addBirdImages(newBird))
+      .then(res => {
+        if (res.ok) {
+          setErrors([]);
+          history.push(`/images`);
+        }
+      })
+      .catch(async res => {
+        const info = await res.json();
+        setErrors(info.errors)
+      })
   };
+
+  if (!sessionUser) return (
+    <Redirect to="/" />
+  );
 
   return (
     <div className=''>
       <form onSubmit={handleSubmit}>
-        <h2 >Add A Bird from ^Country^</h2>
+        <h2 >Add A Bird</h2>
+        <ul className='loginErrorsList'>
+          {errors.map((error) => <li key={errors.indexOf(error)} className='loginErrors'>{error}</li>)}
+        </ul>
         <label htmlFor='imageUrl' className=''>Bird Url</label>
         <input
           onChange={(e) => setImageUrl(e.target.value)}

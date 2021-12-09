@@ -1,4 +1,5 @@
-import React, { useState, Component } from "react";
+//borre component de aqui porque react lo pedia
+import React, { useState } from "react";
 import { CountryDropdown } from "react-country-region-selector";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
