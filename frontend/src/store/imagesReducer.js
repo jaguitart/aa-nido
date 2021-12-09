@@ -52,7 +52,6 @@ export const editBirdImage = (id, editedBird) => async () => {
 
 
 export const removeBirdImage = (id) => async (dispatch) => {
-  // console.log('AQUI', id)
   const res = await csrfFetch(`/api/images/${id}/delete`, {
     method: 'DELETE'
   });

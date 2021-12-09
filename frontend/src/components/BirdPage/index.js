@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux"
 import { useParams, useHistory, NavLink } from 'react-router-dom';
 import { getAllImages, removeBirdImage } from "../../store/imagesReducer";
 import { getComments } from "../../store/commentsReducer";
+import { addAComment } from "../../store/commentsReducer";
 import './BirdPage.css';
 
 const BirdPage = () => {
@@ -11,6 +12,12 @@ const BirdPage = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
+  //need for comments
+  const [commentHeader, setCommentHeader] = useState('');
+  const [commentBody, setCommentBody] = useState('');
+  const sessionUser = useSelector(state => state.session.user);
+  const [errors, setErrors] = useState([]);
+
   const imagesObj = useSelector(state => state.imagesReducer);
   const images = Object.values(imagesObj);
 
@@ -18,7 +25,7 @@ const BirdPage = () => {
 
   const commentsObj = useSelector(state => state.commentsReducer);
   const comments = Object.values(commentsObj)
-  const commentsForThisImage = comments.filter((comment) => +comment.id === +imageId)
+  const commentsForThisImage = comments.filter((comment) => comment.imageId === +imageId)
 
   useEffect(() => {
     dispatch(getAllImages());
@@ -29,6 +36,24 @@ const BirdPage = () => {
     dispatch(removeBirdImage(id))
       .then(() => { history.push('/images') })
   }
+
+  //comments box function
+  const reset =() =>{
+    setCommentHeader('')
+    setCommentBody('')
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newComment = { 
+      userId: sessionUser.id, 
+      imageId,
+      commentHeader,
+      commentBody,
+    };
+    dispatch(addAComment(newComment))
+    // .then(() => {history.push(`/images/${imageId}`)})
+    reset()
+  };
 
 
   return (
@@ -52,12 +77,30 @@ const BirdPage = () => {
       </div>
       <div className='commentsDiv'>
         {commentsForThisImage.map(comment =>
-          <div>
-            <p key={comment?.id} className=''>{comment?.commentHeader}</p>
-            <p key={comment?.id} className=''>{comment?.commentBody}</p>
+          <div key={comment?.id}>
+            <p  className=''>{comment?.commentHeader}</p>
+            <p className=''>{comment?.commentBody}</p>
           </div>
         )}
       </div>
+      <form onSubmit={handleSubmit} className=''>
+        {/* <ul className=''>
+          {errors.map((error, idx) => <li key={idx} className='loginErrors'>{error}</li>)}
+        </ul> */}
+        <input
+          onChange={(e) => setCommentHeader(e.target.value)}
+          value={commentHeader}
+          placeholder='Header comment here...'
+        />
+        <input
+          onChange={(e) => setCommentBody(e.target.value)}
+          value={commentBody}
+          placeholder='Body comment here...'
+        />
+        <div className=''>
+          <button type='submit' className=''>Submit</button>
+        </div>
+      </form>
     </div>
   )
 }
