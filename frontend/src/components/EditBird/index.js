@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory, useParams, Redirect } from "react-router-dom";
-import { editBirdImage } from "../../store/imagesReducer";
-import { getAllImages } from "../../store/imagesReducer";
+import { getAllImages, editBirdImage } from "../../store/imagesReducer";
 import { getAllCountries } from "../../store/locationReducer";
 
 const EditBird = () => {
