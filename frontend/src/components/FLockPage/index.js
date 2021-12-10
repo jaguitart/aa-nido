@@ -1,3 +1,7 @@
+///TRY
+import React from "react";
+import { BiEditAlt, BiExpand, BiX } from "react-icons/bi";
+
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect } from "react";
 import { getAllImages } from "../../store/imagesReducer";
@@ -10,9 +14,14 @@ const FlockPage = () => {
   const imagesObj = useSelector(state => state.imagesReducer);
   const images = Object.values(imagesObj);
 
+  const birdsOwned = images.filter(bird => +bird?.userId === sessionUser?.id)
+    .map(bird => bird.id)
+
   useEffect(() => {
     dispatch(getAllImages());
   }, [dispatch])
+
+  //TENGO QUE HACER EL BOTON PARA ELIMINAR DESDE AQUI
 
   return (
     <div>
@@ -22,19 +31,31 @@ const FlockPage = () => {
       }
       <div className='imgsContainer'>
         {images.map(image => (
-          <NavLink to={`images/${image?.id}`} key={image?.id}>
-            <div className='imgContainer'>
+          <div className='imgContainer'>
+            <NavLink to={`images/${image?.id}`} key={image?.id}>
+              <div>
                 <img className='img' key={image?.id} src={image?.imageUrl} alt={image?.imageTitle} />
+              </div>
               <div className="textDiv">
                 <p className='imgTitle'>{image?.imageTitle}</p>
                 <p className='imgLocation'>{image?.Location?.location}</p>
-                {/* <i class='far fa-edit' style='font-size:24px'></i> */}
+                <BiExpand id="expand" />
+                {birdsOwned.includes(image?.id) &&
+                  <NavLink to={`images/${image?.id}/edit`} key={image?.id}>
+                    <BiEditAlt id="edit" />
+                  </NavLink>
+                }
+                {birdsOwned.includes(image?.id) &&
+                  <NavLink to={`images/${image?.id}/delete`} key={image?.id}>
+                    <BiX id="delete" />
+                  </NavLink>
+                }
               </div>
-            </div>
-          </NavLink>
+            </NavLink>
+          </div>
         ))}
       </div>
-    </div>
+    </div >
   )
 }
 

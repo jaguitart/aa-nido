@@ -115,3 +115,32 @@
 	font-size: 12px;
   font-family: 'Courier New', Courier, monospace;
 }
+
+#edit{
+	background:transparent;
+  position: absolute;
+  font-size: 25px;
+  bottom: 15px;
+  right: 15px;
+  padding: 20px;
+}
+
+  #delete {
+	background:transparent;
+  position: absolute;
+  font-size: 30px;
+  top: -5px;
+  right: 15px;
+  padding: 20px;
+}
+
+#expand {
+	background:transparent;
+  position: absolute;
+  font-size: 45px;
+  align-items: center;
+  top: 45%;
+  left: 35%;
+  color:wheat
+  /* padding: 20px; */
+}

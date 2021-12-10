@@ -57,7 +57,6 @@ const EditBird = () => {
     dispatch(editBirdImage(birdByIdToEdit.id, birdEdited))
       .then(res => {
         if (res.ok) {
-          console.log('hi2')
           setErrors([]);
           history.push(`/images/${birdByIdToEdit.id}`)
         }

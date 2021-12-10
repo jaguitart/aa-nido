@@ -20,8 +20,6 @@ const BirdPage = () => {
 
   const imagesObj = useSelector(state => state.imagesReducer);
   const images = Object.values(imagesObj);
-
-
   const birdById = images.find(bird => +bird?.id === +imageId);
 
   const commentsObj = useSelector(state => state.commentsReducer);
