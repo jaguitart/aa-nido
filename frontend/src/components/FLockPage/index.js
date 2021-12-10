@@ -36,7 +36,7 @@ const FlockPage = () => {
             <div className="textDiv">
               <p className='imgTitle'>{image?.imageTitle}</p>
               <p className='imgLocation'>{image?.Location?.location}</p>
-              <p className='userName'>by: {image?.User.username}</p>
+              <p className='userName'>by: {image?.User?.username}</p>
               <NavLink to={`images/${image?.id}`}>
                 <BiExpand id="expand" />
               </NavLink>

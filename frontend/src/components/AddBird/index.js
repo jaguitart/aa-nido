@@ -11,7 +11,7 @@ const AddBird = () => {
   const sessionUser = useSelector(state => state.session.user);
   const [imageTitle, setImageTitle] = useState('');
   const [imageUrl, setImageUrl] = useState('');
-  const [locationId, setLocatioId] = useState(1);
+  const [locationId, setLocatioId] = useState('');
   const [imageBody, setImageBody] = useState('');
   // const [albumId, setAlbumId] = useState('');
   const [errors, setErrors] = useState([]);
@@ -63,46 +63,65 @@ const AddBird = () => {
   );
 
   return (
-    <div className=''>
-      <form onSubmit={handleSubmit}>
-        <h2 >Add A Bird</h2>
-        <ul className='loginErrorsList'>
-          {errors.map((error) => <li key={errors?.indexOf(error)} className='loginErrors'>{error}</li>)}
-        </ul>
-        <label htmlFor='imageUrl' className=''>Bird Url</label>
-        <input
-          onChange={(e) => setImageUrl(e.target.value)}
-          value={imageUrl}
-          placeholder='Bird Url'
-        />
-        <label htmlFor='imageTitle' className=''>Bird Name</label>
-        <input
-          onChange={(e) => setImageTitle(e.target.value)}
-          value={imageTitle}
-          placeholder='Bird Name'
-        />
-        <label htmlFor='imageBody' className=''>Bird comments</label>
-        <input
-          onChange={(e) => setImageBody(e.target.value)}
-          value={imageBody}
-          placeholder='Bird Comments'
-        />
-        <label htmlFor='locationId' className=''>Bird Location</label>
-        <select
-          name='locationId'
-          onChange={(e) => setLocatioId(e.target.value)}
-          value={locationId}
-        >
-          {countriesArrIdLocation.map(country => (
-            <option key={country?.id} value={country?.id}>
-              {country?.location}
-            </option>
-          ))}
-        </select>
-        <div className=''>
-          <button type='submit' className=''>Submit</button>
+    <div className="container">
+      <div className="card">
+        <div className="card-image">
+          <h2 class="card-heading">
+            Get started
+            <h3>Let us create a Bird</h3>
+          </h2>
         </div>
-      </form>
+        <form onSubmit={handleSubmit} className="card-form">
+          <ul className='loginErrorsList'>
+            {errors.map((error) => <li key={errors?.indexOf(error)} className='loginErrors'>{error}</li>)}
+          </ul>
+          <div className="input">
+            <input
+              className="input-field"
+              onChange={(e) => setImageUrl(e.target.value)}
+              value={imageUrl}
+            />
+            <label htmlFor='imageUrl' className='input-label'>Bird Url</label>
+          </div>
+          <div className="input">
+            <input
+              className="input-field"
+              onChange={(e) => setImageTitle(e.target.value)}
+              value={imageTitle}
+            />
+            <label htmlFor='imageTitle' className='input-label'>Bird Name</label>
+          </div>
+          <div className="input">
+            <textarea
+              className="input-field"
+              onChange={(e) => setImageBody(e.target.value)}
+              value={imageBody}
+            />
+            <label htmlFor='imageBody' className='input-label'>Bird comments</label>
+          </div>
+          <div className="input">
+          <select
+            className="input-field"
+            name='locationId'
+            onChange={(e) => setLocatioId(e.target.value)}
+            value={locationId}
+          >
+            <option className="option1">
+              ---- select a country ----
+            </option>
+            {countriesArrIdLocation.map(country => (
+              <option key={country?.id} value={country?.id}>
+                {country?.location}
+              </option>
+            ))}
+          </select>
+          <label htmlFor='locationId' className='input-label'>Bird Location</label>
+          </div>
+          <div className='action'>
+            <button type='submit' className='action-button'>Submit</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
