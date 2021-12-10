@@ -1,17 +1,27 @@
+#flockTitle {
+  font-family: Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: lighter;
+  color: rgb(53, 53, 53);
+  position: relative;
+  left: 200px;
+  margin-bottom: 15px; 
+}
+
 .imgContainer img {
   width: 100% !important;
   height: auto !important;
 }
 
 .imgsContainer {
-  padding:40px;
+  padding-right:200px;
+  padding-left:200px;
   line-height: 0;
   -webkit-column-count: 5;
   -webkit-column-gap: 0px;
   -moz-column-count: 5;
   -moz-column-gap: 0px;
   column-count: 5;
-  column-gap: 15px;
+  column-gap: 10px;
 }
 
 .imgsContainer {
@@ -21,7 +31,7 @@
   -moz-column-count: 5;
   -moz-column-gap: 0px;
   column-count: 5;
-  column-gap: 15px;
+  column-gap: 10px;
 }
 
 .imgContainer {
@@ -30,7 +40,7 @@
 	overflow: hidden;
 	max-width: 100%;
 	height: auto;
-  margin-bottom: 15px
+  margin-bottom: 10px
 }
 .imgContainer img {
 	max-width: 100%;
@@ -68,7 +78,8 @@
   margin-top: 10px;
 	text-align:left;
 	font-size: 130%;
-  font-family: 'Courier New', Courier, monospace;
+  font-weight:500;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
 .imgLocation {
@@ -77,8 +88,18 @@
   margin:auto;
   margin-top: 28px;
 	text-align:left;
+	font-size: 15px;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.userName {
+  position: absolute;
+  bottom: 30px;
+  margin:auto;
+  margin-top: 28px;
+	text-align:left;
 	font-size: 12px;
-  font-family: 'Courier New', Courier, monospace;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
 #edit{
@@ -86,10 +107,15 @@
   color:rgba(150, 150, 150, 0.74);
   position: absolute;
   font-size: 25px;
-  bottom: 15px;
-  right: 15px;
+  top: -13px;
+  left: -15px;
   padding: 20px;
   text-decoration:none;
+  transition: font-size 1s;
+}
+
+#edit:hover {
+  font-size: 35px;
 }
 
   #delete {
@@ -97,20 +123,30 @@
   color:rgba(150, 150, 150, 0.74);
   position: absolute;
   font-size: 40px;
-  top: -5px;
-  right: 15px;
+  top: -20px;
+  right: 0px;
   padding: 20px;
   text-decoration:none;
   cursor: pointer;
+  transition: font-size 1s;
+}
+
+#delete:hover {
+  font-size: 50px;
 }
 
 #expand {
 	background:transparent;
   color:rgba(150, 150, 150, 0.74);
   position: absolute;
-  font-size: 60px;
+  font-size: 50px;
   align-items: center;
   top: 30%;
   left: 40%;
   text-decoration:none;
+  transition: font-size 1s;
+}
+
+#expand:hover {
+  font-size: 60px;
 }

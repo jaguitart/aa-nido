@@ -26,10 +26,7 @@ const FlockPage = () => {
 
   return (
     <div>
-      <h1>All Birds from a specific Region</h1>
-      {sessionUser &&
-        <NavLink exact to="/images/add" className="">Add a Bird</NavLink>
-      }
+      <h1 id='flockTitle'>Explore</h1>
       <div className='imgsContainer'>
         {images.map(image => (
           <div className='imgContainer' key={image?.id}>
@@ -39,6 +36,7 @@ const FlockPage = () => {
             <div className="textDiv">
               <p className='imgTitle'>{image?.imageTitle}</p>
               <p className='imgLocation'>{image?.Location?.location}</p>
+              <p className='userName'>by: {image?.User.username}</p>
               <NavLink to={`images/${image?.id}`}>
                 <BiExpand id="expand" />
               </NavLink>

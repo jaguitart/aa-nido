@@ -24,8 +24,11 @@ function Navigation({ isLoaded }){
   return (
     <ul>
       <li>
-        <NavLink exact to="/">Home</NavLink>
+        <NavLink exact to="/images">Birds</NavLink>
         {isLoaded && sessionLinks}
+        {sessionUser &&
+        <NavLink exact to="/images/add" className="">Add a Bird</NavLink>
+      }
       </li>
     </ul>
   );
