@@ -139,14 +139,15 @@
 	background:transparent;
   color:rgba(150, 150, 150, 0.74);
   position: absolute;
-  font-size: 50px;
+  font-size: 40px;
   align-items: center;
   top: 30%;
-  left: 40%;
+  left: 37%;
   text-decoration:none;
-  transition: font-size 1s;
+  transition: transform,font-size  1s;
+
 }
 
 #expand:hover {
-  font-size: 60px;
+  font-size: 55px;
 }

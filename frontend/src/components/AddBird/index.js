@@ -72,7 +72,7 @@ const AddBird = () => {
           </h2>
         </div>
         <form onSubmit={handleSubmit} className="card-form">
-          <ul className='loginErrorsList'>
+          <ul className=''>
             {errors.map((error) => <li key={errors?.indexOf(error)} className='loginErrors'>{error}</li>)}
           </ul>
           <div className="input">
@@ -100,22 +100,22 @@ const AddBird = () => {
             <label htmlFor='imageBody' className='input-label'>Bird comments</label>
           </div>
           <div className="input">
-          <select
-            className="input-field"
-            name='locationId'
-            onChange={(e) => setLocatioId(e.target.value)}
-            value={locationId}
-          >
-            <option className="option1">
-              ---- select a country ----
-            </option>
-            {countriesArrIdLocation.map(country => (
-              <option key={country?.id} value={country?.id}>
-                {country?.location}
+            <select
+              className="input-field"
+              name='locationId'
+              onChange={(e) => setLocatioId(e.target.value)}
+              value={locationId}
+            >
+              <option className="option1">
+                ---- select a country ----
               </option>
-            ))}
-          </select>
-          <label htmlFor='locationId' className='input-label'>Bird Location</label>
+              {countriesArrIdLocation.map(country => (
+                <option key={country?.id} value={country?.id}>
+                  {country?.location}
+                </option>
+              ))}
+            </select>
+            <label htmlFor='locationId' className='input-label'>Bird Location</label>
           </div>
           <div className='action'>
             <button type='submit' className='action-button'>Submit</button>

@@ -66,6 +66,9 @@ const validateEdit = [
     .withMessage('Please provide a valid bird description.')
     .isLength({ max: 5000 })
     .withMessage('Please provide a valid bird description with max length 5000 characters.'),
+  check('locationId')
+    .isInt({ min: 1 })
+    .withMessage('Please select a country.'),
   handleValidationErrors
 ];
 
