@@ -5,6 +5,7 @@
   position: relative;
   left: 200px;
   margin-bottom: 15px; 
+  margin-top: 40px;
 }
 
 .imgContainer img {
@@ -139,10 +140,10 @@
 	background:transparent;
   color:rgba(94, 94, 94, 0.74);
   position: absolute;
-  font-size: 80px;
+  font-size: 60px;
   align-items: center;
   top: 25%;
-  left: 35%;
+  left: 40%;
   text-decoration:none;
   transition: color 1s linear;
 

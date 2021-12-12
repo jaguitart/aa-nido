@@ -1,0 +1,81 @@
+.divNavigation {
+  display: flex;
+}
+
+.nidoLogo {
+  height: 120px;
+}
+
+.logoBoxDiv{
+  margin-left: 200px;
+}
+
+.navDiv{
+  display: flex;
+  width: 100%;
+
+  justify-content: flex-end;
+}
+
+#addSign{
+  color: black;
+  text-decoration: none;
+  background:transparent;
+  font-size: 50px;
+  margin-right: 65px;
+  margin-top: 50px;
+  cursor: pointer;
+}
+
+.profileAndAdd{
+  display: flex;
+  margin-right: 200px; 
+  align-items: center;
+}
+
+.blackSpace {
+  margin-top: 15px;
+  height: 40px;
+  background-image: url('https://wallup.net/wp-content/uploads/2015/07/black-and-white-birds-digital-art-monochrome-artwork.jpg');
+  background-size: 10%;
+  opacity: 0.3;
+}
+
+#logOutLogoDiv {
+  margin-left: 15px;
+}
+
+#userTexts {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#userNameNavBar {
+  font-size: 25px;
+  margin-bottom: 0px;
+  margin-top: 55px;
+  margin-right: 20px;
+}
+
+#emailNavBar {
+  font-size: 15px;
+  margin-top: 0px;
+  margin-right: 20px;
+  text-decoration: none;
+}
+
+#logInNameNavBar, #signUpNameNavBar{
+  color: black;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-decoration: none;
+  padding: 20px;
+  font-size: 25px;
+  margin-top: 25px;
+}
+
+#logInNameNavBar {
+
+}
+
+#signUpNameNavBar {
+
+}

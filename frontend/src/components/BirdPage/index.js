@@ -109,9 +109,7 @@ const BirdPage = () => {
                   </div>
                   <p className='textos' id='textoBody'>{comment?.commentBody}</p>
                   {sessionUser && sessionUser.id === comment?.userId &&
-                    <p className='textos' onClick={() => handleDelete(comment?.id)}>
-                      <BiX id="delete2" />
-                    </p>
+                      <BiX id="delete2" onClick={() => handleDelete(comment?.id)}/>
                   }
                 </div>
               )}

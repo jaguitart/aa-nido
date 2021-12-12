@@ -5,6 +5,7 @@
 
 #allHome{
 position: relative;
+overflow: hidden;
 }
 
 .homeBackground {
