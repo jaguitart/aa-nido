@@ -42,7 +42,10 @@ img {
 .card-image {
 	border-radius: 8px;
 	padding-bottom: 45%;
-	background-image: url('https://cutewallpaper.org/23/white-feather-wallpaper/2390715812.jpg');
+	/* background-image: url('https://cutewallpaper.org/23/white-feather-wallpaper/2390715812.jpg'); */
+	background-image: url('https://storage.googleapis.com/webdesignledger.pub.network/LaT/edd/2016/02/black-and-white-bird-animal-texture-1-780x520.jpg');
+	background-position-y: 267px;
+	background-position-x: -120px;
 	background-size: 150%;
 	position: relative;
 	transition: 1s;
@@ -145,4 +148,8 @@ textarea {
 
 .card, .formErrors, .loginErrors{
 	background-color: rgba(238, 238, 238, 0.993);
+}
+
+#logInButton {
+	margin-bottom: 15px;
 }

@@ -34,31 +34,46 @@ function LoginFormPage() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
-      <label>
-        Username or Email
-        <input
-          type="text"
-          value={credential}
-          onChange={(e) => setCredential(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit">Log In</button>
-      <button type="submit" onClick={handleDemo}>Demo</button>
-    </form>
+    <div className='contanier'>
+      <div className="card">
+        <div className="card-image">
+          <h2 className="card-heading">
+            Nido Sign In
+          </h2>
+        </div>
+        <form onSubmit={handleSubmit} className="card-form">
+          <ul className='formErrors'>
+            {errors.map((error, idx) => <li className='loginErrors' key={idx}>{error}</li>)}
+          </ul>
+          <div className="input">
+            <input
+              className="input-field"
+              type="text"
+              value={credential}
+              onChange={(e) => setCredential(e.target.value)}
+              required
+            />
+            <label className='input-label'>
+              Username or Email
+            </label>
+          </div>
+          <div className="input">
+            <input
+              className="input-field"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <label className='input-label'>
+              Password
+            </label>
+          </div>
+          <button type="submit" className='action-button' id='logInButton'>Log In</button>
+          <button type="submit" onClick={handleDemo} className='action-button'>Demo User</button>
+        </form>
+      </div>
+    </div>
   );
 }
 

@@ -16,10 +16,10 @@ const EditBird = () => {
 
   const fullState = Object.values(countriesObj)[2]
   const countries = Object.values(fullState)
-  
+
   const imagesObj = useSelector(state => state.imagesReducer);
   const images = Object.values(imagesObj);
-  
+
   const birdByIdToEdit = images.find(bird => +bird?.id === +imageId)
 
 

@@ -33,54 +33,70 @@ function SignupFormPage() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
-      <label>
-        Email
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Username
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Country
-        <CountryDropdown
-          value={country}
-          onChange={(e) => setCountry(e)} />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Confirm Password
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit">Sign Up</button>
-    </form>
+    <div className='contanier'>
+      <div className="card">
+        <div className="card-image">
+          <h2 className="card-heading">
+            Nido Sign Up
+          </h2>
+        </div>
+        <form onSubmit={handleSubmit} className="card-form">
+          <ul className='formErrors'>
+            {errors.map((error, idx) => <li className='loginErrors' key={idx}>{error}</li>)}
+          </ul >
+          <div className="input">
+            <input
+              className="input-field"
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <label className='input-label'>Email</label>
+          </div>
+          <div className="input">
+            <input
+              className="input-field"
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+            <label className='input-label'>Username</label>
+          </div>
+          <div className="input">
+            <CountryDropdown
+              className="input-field"
+              value={country}
+              onChange={(e) => setCountry(e)} />
+            <label className='input-label'>Country</label>
+          </div>
+          <div className="input">
+            <input
+              className="input-field"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <label className='input-label'>Password</label>
+          </div>
+          <div className="input">
+            <input
+              className="input-field"
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              required
+            />
+            <label className='input-label'>Confirm Password</label>
+          </div >
+          <div className='action'>
+            <button type="submit" className='action-button'>Sign Up</button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }
 

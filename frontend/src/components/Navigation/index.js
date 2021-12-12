@@ -22,15 +22,17 @@ function Navigation({ isLoaded }){
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/images">Birds</NavLink>
+    <div className='boxAroundNav'>
+      <div className='logoBoxDiv'>
+        <a href='/' className='logoLink'>
+          AAAAA
+        </a>
+      </div>
+      <div className='navDiv'>
+        <NavLink exact to="/images" className="navbarItem" id='navbarItemLeft'>Home</NavLink>
         {isLoaded && sessionLinks}
-        {sessionUser &&
-        <NavLink exact to="/images/add" className="">Add a Bird</NavLink>
-      }
-      </li>
-    </ul>
+      </div>
+    </div>
   );
 }
 
