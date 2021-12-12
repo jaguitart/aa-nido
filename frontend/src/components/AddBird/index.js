@@ -72,7 +72,7 @@ const AddBird = () => {
           </h2>
         </div>
         <form onSubmit={handleSubmit} className="card-form">
-          <ul className=''>
+          <ul className='formErrors'>
             {errors.map((error) => <li key={errors?.indexOf(error)} className='loginErrors'>{error}</li>)}
           </ul>
           <div className="input">

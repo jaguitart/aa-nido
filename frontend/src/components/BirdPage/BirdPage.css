@@ -8,13 +8,14 @@
 }
 
 .imgSingleBird {
-  border: 1px solid rgb(0, 0, 0);
   max-width: 1000px;
   max-height: 600px;
+  box-shadow: 0px 0px 120px 20px rgb(0, 0, 0);
 }
 
 .imgDiv{
-  background-color: grey;
+  background-color: transparent;
+  text-align: right;
 }
 
 .textDiv {
@@ -36,5 +37,201 @@
 .body {
   font-size: 20px;
   margin-top: 0px;
+}
+
+.textAndCommentsDiv {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  display: flex;
+}
+
+.textos, .textDiv2, .title, .location, .user, .body, .textDiv, .commentFormDiv, .text  {
+  background-color: transparent;
+}
+
+.title, .location, .body, .user {
+  font-family: 'georgia';
+  margin: 0px 40px;
+  text-align: left;
+}
+
+.title {
+  margin-top: 10px;
+  font-size: 35px;
+}
+
+.location{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.location, .body {
+  font-family: Verdana, sans-serif;
+}
+
+.user {
+  margin-bottom: 15px;
+  margin-top: 3px;
+  font-size: 15px;
+}
+
+.body {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.textsDiv {
+  background-color: rgba(238, 238, 238, 0.993);
+  width: 45%;
+  margin-left: 10%;
+  margin-right: 20px;
+  border-radius: 5px;
+}
+
+.textos, .textDiv2, .commentForm, .commentButtonDiv {
+  background-color: rgba(238, 238, 238, 0.993);
+  padding-left: 20px;
+}
+
+.commentsDiv {
+  background-color: rgba(238, 238, 238, 0.993);
+  width: 55%;
+  margin-right: 10%;
+  margin-left: 20px;
+  border-radius: 5px;
+}
+
+.commentFormDiv, #erroresComments, #commentsForm, #textCommentArea, #commentFormDiv, #inputTextComment, #botonComments {
+  background-color: rgba(238, 238, 238, 0.993);
+  align-items: center;
+}
+
+.commentButtonDiv{
+  padding-bottom: 20px;
+  margin-left: 25%;
+}
+
+.commentButton {
+	font: inherit;
+	font-size: 1.25rem;
+	padding: 1em;
+	width: 100%;
+	font-weight: 500;
+	background-color: #C3E8DF;
+	border-radius: 6px;
+	color: #FFF;
+	border: 0;
+  transition-duration: 0.8s;
+  width: 70%;
+}
+
+.commentButton:hover {
+  background-color: #3fb99b;
+}
+
+#textCommentArea {
+  height: 40px;
+  width: 70%;
+}
+
+#textComment {
+  width: 70%;
+}
+
+#errorsComments, .textos, .textDiv2, .textDiv3, #delete2, #commentDeleteButton, .usuarioComments, #userTitle, #editBirdX, #backToBirds {
+  background-color: rgba(238, 238, 238, 0.993);
+}
+
+.textDiv2 {
+  padding-top: 15px;
+  padding-left: 60px;
+  border-radius: 5px;
+}
+
+#delete2 {
+  position: relative;
+  top: -68px;
+  left: 90%;
+  font-size: 25px;
+  color:rgba(26, 26, 26, 0.74);
+  text-decoration:none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#delete2:hover {
+color: rgb(0, 0, 0);
+}
+
+.formErrors{
+  text-align: center;
+}
+
+#textoHeader {
+  font-size: 16px;
+  font-weight: 700;
+  font-family: Verdana, sans-serif;
+  margin-bottom: 5px;
+}
+
+#textoBody {
+  margin-top: 0px;
+  margin-left: 80px;
+  font-size: 14px;
+  font-family: Verdana, sans-serif;
+}
+
+#userTitle {
+  display:flex;
+}
+
+.usuarioComments {
+  margin-top: 18px;
+  font-size: 14px;
+}
+
+#deleBirdX {
+  position:absolute;
+  /* display: none; */
+  color:rgb(92, 92, 92);
+  background-color: transparent;
+  font-size: 40px;
+  text-decoration:none;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+#deleBirdX:hover  {
+  color:rgb(216, 216, 216);
+}
+
+#editBirdX {
+  position:absolute;
+  margin-top: 50px;
+  color:rgb(92, 92, 92);
+  background-color: transparent;
+  font-size: 40px;
+  text-decoration:none;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+#editBirdX:hover  {
+  color:rgb(216, 216, 216);
+}
+
+#backToBirds {
+  position:absolute;
+  margin-top: -50px;
+  margin-left:-850px;
+  color:rgb(92, 92, 92);
+  background-color: transparent;
+  font-size: 40px;
+  text-decoration:none;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+#backToBirds:hover  {
+  color:rgb(216, 216, 216);
 }
 

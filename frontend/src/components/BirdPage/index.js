@@ -1,3 +1,5 @@
+import React from "react";
+import { BiX, BiEditAlt, BiArrowBack } from "react-icons/bi";
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux"
 import { useParams, useHistory, NavLink } from 'react-router-dom';
@@ -27,8 +29,8 @@ const BirdPage = () => {
   const commentsForThisImage = comments.filter((comment) => comment.imageId === +imageId)
 
   useEffect(() => {
-    dispatch(getAllImages());
     dispatch(getComments());
+    dispatch(getAllImages());
   }, [dispatch])
 
   const handleRemove = (id) => {
@@ -51,6 +53,7 @@ const BirdPage = () => {
     dispatch(addAComment(newComment))
       .then(res => {
         if (res.ok) {
+          dispatch(getComments());
           setErrors([])
           reset()
         }
@@ -69,64 +72,85 @@ const BirdPage = () => {
   return (
     <div>
       <div>
-        <NavLink to='/images'>
-          <p>Back</p>
-        </NavLink>
-        {sessionUser && sessionUser.id === birdById?.userId &&
-          <NavLink to={`/images/${imageId}/edit`}>
-            <p>Edit</p>
-          </NavLink>
-        }
-        {sessionUser && sessionUser.id === birdById?.userId &&
-          <button onClick={() => handleRemove(imageId)}>
-            DELETE
-          </button>
-        }
-      </div>
-      <div>
         <div className='imgSingleDiv'>
+          <div>
+            <NavLink to='/images'>
+              <BiArrowBack id="backToBirds" />
+            </NavLink>
+          </div>
           <div className='imgDiv'>
+            {sessionUser && sessionUser.id === birdById?.userId &&
+              <BiX id="deleBirdX" onClick={() => handleRemove(imageId)} />
+            }
+            {sessionUser && sessionUser.id === birdById?.userId &&
+              <NavLink to={`/images/${imageId}/edit`}>
+                <BiEditAlt id="editBirdX" />
+              </NavLink>
+            }
             <img className='imgSingleBird' key={birdById?.id} src={birdById?.imageUrl} alt={birdById?.imageTitle} />
           </div>
         </div>
-          <div className='textDiv'>
+
+        <div className='textAndCommentsDiv'>
+          <div className='textsDiv'>
             <p className='title'>{birdById?.imageTitle}</p>
             <p className='location'>{birdById?.Location?.location}</p>
+            <p className='user'>by: {birdById?.User?.username}</p>
             <p className='body'>{birdById?.imageBody}</p>
           </div>
-        <div className='commentsDiv'>
-          {commentsForThisImage.map(comment =>
-            <div key={comment?.id}>
-              <p className=''>{comment?.commentHeader}</p>
-              <p className=''>{comment?.commentBody}</p>
-              <p>{sessionUser && sessionUser.id === comment?.userId &&
-                <button onClick={() => handleDelete(comment?.id)} className=''>
-                  Delete
-                </button>
-              }</p>
+
+          <div className='commentsDiv'>
+            <div className='commentsTextDiv'>
+              {commentsForThisImage.map(comment =>
+                <div className='textDiv2' key={comment?.id}>
+                  <div id='userTitle'>
+                    <p className='usuarioComments'>{comment?.User?.username}:</p>
+                    <p className='textos' id='textoHeader'>{comment?.commentHeader}</p>
+                  </div>
+                  <p className='textos' id='textoBody'>{comment?.commentBody}</p>
+                  {sessionUser && sessionUser.id === comment?.userId &&
+                    <p className='textos' onClick={() => handleDelete(comment?.id)}>
+                      <BiX id="delete2" />
+                    </p>
+                  }
+                </div>
+              )}
             </div>
-          )}
+
+            <div className='commentFormDiv' id='commentFormDiv'>
+              {sessionUser &&
+                <form onSubmit={handleComment} className='card-form' id='commentsForm'>
+                  <div className='errorsDiv'>
+                    <ul className='formErrors' >
+                      {errors.map((error) => <li key={errors.indexOf(error)} id='erroresComments' className='loginErrors'>{error}</li>)}
+                    </ul>
+                  </div>
+                  <div className="input" id='inputTextComment'>
+                    <input
+                      className="input-field"
+                      id='textComment'
+                      onChange={(e) => setCommentHeader(e.target.value)}
+                      value={commentHeader}
+                      placeholder='Comment title here...'
+                    />
+                  </div>
+                  <div className="input" id='commentsForm'>
+                    <textarea
+                      id='textCommentArea'
+                      className="input-field"
+                      onChange={(e) => setCommentBody(e.target.value)}
+                      value={commentBody}
+                      placeholder='Comment here...'
+                    />
+                  </div>
+                  <div className='commentButtonDiv'>
+                    <button type='submit' className='commentButton'>Submit</button>
+                  </div>
+                </form>
+              }
+            </div>
+          </div>
         </div>
-        {sessionUser &&
-          <form onSubmit={handleComment} className=''>
-            <ul className=''>
-              {errors.map((error) => <li key={errors.indexOf(error)} className='loginErrors'>{error}</li>)}
-            </ul>
-            <input
-              onChange={(e) => setCommentHeader(e.target.value)}
-              value={commentHeader}
-              placeholder='Header comment here...'
-            />
-            <input
-              onChange={(e) => setCommentBody(e.target.value)}
-              value={commentBody}
-              placeholder='Body comment here...'
-            />
-            <div className=''>
-              <button type='submit' className=''>Submit</button>
-            </div>
-          </form>
-        }
       </div>
     </div>
   )

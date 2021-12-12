@@ -16,21 +16,21 @@
   padding-right:200px;
   padding-left:200px;
   line-height: 0;
-  -webkit-column-count: 5;
+  -webkit-column-count: 6;
   -webkit-column-gap: 0px;
-  -moz-column-count: 5;
+  -moz-column-count: 6;
   -moz-column-gap: 0px;
-  column-count: 5;
+  column-count: 6;
   column-gap: 10px;
 }
 
 .imgsContainer {
   line-height: 0;
-  -webkit-column-count: 5;
+  -webkit-column-count: 6;
   -webkit-column-gap: 0px;
-  -moz-column-count: 5;
+  -moz-column-count: 6;
   -moz-column-gap: 0px;
-  column-count: 5;
+  column-count: 6;
   column-gap: 10px;
 }
 
@@ -137,17 +137,17 @@
 
 #expand {
 	background:transparent;
-  color:rgba(150, 150, 150, 0.74);
+  color:rgba(94, 94, 94, 0.74);
   position: absolute;
-  font-size: 40px;
+  font-size: 80px;
   align-items: center;
-  top: 30%;
-  left: 37%;
+  top: 25%;
+  left: 35%;
   text-decoration:none;
-  transition: transform,font-size  1s;
+  transition: color 1s linear;
 
 }
 
 #expand:hover {
-  font-size: 55px;
+  color: rgba(197, 197, 197, 0.74);
 }

@@ -1,15 +1,17 @@
 const express = require('express')
 const router = express.Router();
 const asyncHandler = require('express-async-handler');
-const { Comment } = require('../../db/models');
+const { Comment, User } = require('../../db/models');
 const { check } = require('express-validator');
 const { requireAuth } = require('../../utils/auth');
 const { handleValidationErrors } = require('../../utils/validation');
 
 // GET COMMENTS
 router.get('', asyncHandler(async (req, res) => {
-  const comments = await Comment.findAll()
-  res.json(comments)
+  const comments = await Comment.findAll(({
+    include: [{ model: User }]
+  }))
+  await res.json(comments)
 }));
 
 // ADD/POST COMMENT

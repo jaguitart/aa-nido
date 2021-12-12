@@ -65,7 +65,6 @@ const EditBird = () => {
       .catch(async res => {
         const info = await res.json();
         setErrors(info.errors)
-        console.log(info.errors);
       })
   }
 
@@ -78,11 +77,11 @@ const EditBird = () => {
       <div className="card">
         <div className="card-image">
           <h2 className="card-heading">
-            Edit {birdByIdToEdit?.imageTitle}
+            Edit: {birdByIdToEdit?.imageTitle}
           </h2>
         </div>
         <form onSubmit={handleSubmit} className="card-form">
-          <ul className=''>
+          <ul className='formErrors'>
             {errors.map((error) => <li key={errors.indexOf(error)} className='loginErrors'>{error}</li>)}
           </ul>
           <div className="input">
