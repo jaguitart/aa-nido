@@ -26,7 +26,7 @@ const FlockPage = () => {
 
   return (
     <div>
-      <h1 id='flockTitle'>Explore</h1>
+      <h1 id='flockTitle'>Explore birds from South America</h1>
       <div className='imgsContainer'>
         {images.map(image => (
           <div className='imgContainer' key={image?.id}>
