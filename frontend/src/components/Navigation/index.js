@@ -50,7 +50,7 @@ function Navigation({ isLoaded }) {
           </NavLink>
         </div>
         <div className='navDiv'>
-          <NavLink exact to="/" className="navbarItem" id='navbarItemLeft'>
+          <NavLink exact to="/images" className="navbarItem" id='navbarItemLeft'>
             <GiNestBirds id="addSign" />
           </NavLink>
           {sessionUser &&

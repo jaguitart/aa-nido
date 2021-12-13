@@ -3,7 +3,8 @@
 }
 
 .nidoLogo {
-  height: 120px;
+  height: 100px;
+  max-width: 185px;
 }
 
 .logoBoxDiv{
