@@ -8,7 +8,7 @@ Link to live site: [Nido](https://aa-nido.herokuapp.com/)
 [Features](https://github.com/jaguitart/aa-nido/wiki/Features)
 
 
-![NidoHome]()
+![NidoHome](https://raw.githubusercontent.com/jaguitart/aa-nido/master/frontend/public/images/1.mainPage.png)
 
 ## At A Glance
 Nido is a full stack web application that allows logged users to:
@@ -33,12 +33,12 @@ psql
 ## Key Features
 ### User Authorization
 User authorization is handled in JS using BCrypt for password hashing. When users log in, the password they provide is rehashed and checked against the original password. 
-![Splash Page]()
+![Splash Page](https://raw.githubusercontent.com/jaguitart/aa-nido/master/frontend/public/images/2.signup.png)
 
 ### Post/Edit/Delete a Photo
 An authorized user can post a photo that can then be seen by any logged in user. Only the authorized user may then edit or delete the posted photos.
-![Create a Photo]()
+![Create a Photo](https://raw.githubusercontent.com/jaguitart/aa-nido/master/frontend/public/images/4.flockPage.png)
 
 ### Post/Delete a Comment
 An authorized user may post an comment to a photo. Only the authorized user can then delete the comment to the posted photo. The user may also delete the posted comment.
-![Create a Comment]()
+![Create a Comment](https://raw.githubusercontent.com/jaguitart/aa-nido/master/frontend/public/images/3.postAComment.png)
