@@ -19,7 +19,7 @@ Nido is a full stack web application that allows logged users to:
  - Delete a comment to a posted photo
 
 ## Application Architecture
-Nido is built with a React frontend and an Express backend. PostgreSQL is also used as a database.
+Nido is built with a React/Redux frontend and an Express backend. PostgreSQL is also used as a database.
 
 ## Tech-Stack
 Javascript
@@ -32,7 +32,7 @@ psql
 
 ## Key Features
 ### User Authorization
-User authorization is handling in JS using BCrypt for password hashing. When users log in, the password they provide is rehashed and checked agains the original password. 
+User authorization is handled in JS using BCrypt for password hashing. When users log in, the password they provide is rehashed and checked against the original password. 
 ![Splash Page]()
 
 ### Post/Edit/Delete a Photo
@@ -40,5 +40,5 @@ An authorized user can post a photo that can then be seen by any logged in user.
 ![Create a Photo]()
 
 ### Post/Delete a Comment
-An authorized user may post an commnet to a photo. Only the authorized user can then delete the comment to the posted photo. The user may also delete the posted comment.
-![Create an Comment]()
+An authorized user may post an comment to a photo. Only the authorized user can then delete the comment to the posted photo. The user may also delete the posted comment.
+![Create a Comment]()
