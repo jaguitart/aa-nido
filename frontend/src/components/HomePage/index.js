@@ -18,10 +18,10 @@ const HomePage = () => {
         <div className="container2">
           <div className="card2">
             <div className="card-image2">
-              <h2 class="card-heading2">
+              <h2 className="card-heading2">
                 Welcome to Nido
-                <h3>Get started</h3>
               </h2>
+                <h3>Get started</h3>
             </div>
             <div className='action2'>
               <NavLink to={`/login`}>

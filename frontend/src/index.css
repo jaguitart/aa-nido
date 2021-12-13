@@ -5,7 +5,7 @@
 	line-height: 1.5;
 	padding: 0 2rem;
   display: block;
-  color: #409C85;
+  color:#b95b03;
   text-decoration: none;
 
 }
@@ -21,8 +21,7 @@ img {
 }
 
 .card {
-	background-color: red;
-  border: solid 10px #C3E8DF;
+  border: solid 10px #b95b0379;
 	margin: 2rem auto;
 	display: flex;
 	flex-direction: column;
@@ -30,13 +29,12 @@ img {
 	max-width: 425px;
 	background-color: #FFF;
 	border-radius: 10px;
-	box-shadow: 0 10px 20px 0 rgba(rgb(252, 0, 0), .25);
 	padding: .75rem;
   transition: 0.8s;
 }
 
 .card:hover {
-  border: solid 10px #3fb99b;
+  border: solid 10px #ee7b0f;;
 }
 
 .card-image {
@@ -59,14 +57,18 @@ img {
 	right: 10%;
 	font-size: 1.75rem;
 	font-weight: 700;
-	line-height: 1.222;
+	line-height: 3;
 }
 
-h3 {
+h3, h2 {
   display: absolute;
   font-size: .75em;
   font-weight: 400;
-  margin-top: .25em;
+  /* margin-top: .25em; */
+}
+
+h2 {
+	font-size: 30px;
 }
 
 .card-form {
@@ -110,7 +112,7 @@ h3 {
 	padding: 1em;
 	width: 100%;
 	font-weight: 500;
-	background-color: #C3E8DF;
+	background-color: #b95b03;
 	border-radius: 6px;
 	color: #FFF;
 	border: 0;
@@ -118,7 +120,7 @@ h3 {
 }
 
 .action-button:hover {
-  background-color: #3fb99b;
+  background-color: #ee7b0f;
 }
 
 

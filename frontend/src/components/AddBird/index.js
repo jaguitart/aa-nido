@@ -66,9 +66,8 @@ const AddBird = () => {
     <div className="container">
       <div className="card">
         <div className="card-image">
-          <h2 class="card-heading">
-            Get started
-            <h3>Let us create a Bird</h3>
+          <h2 className="card-heading">
+            Create a Bird
           </h2>
         </div>
         <form onSubmit={handleSubmit} className="card-form">
