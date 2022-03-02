@@ -11,15 +11,14 @@ const { handleValidationErrors } = require('../../utils/validation');
 // GET IMAGES
 router.get('', asyncHandler(async (req, res) => {
   const images = await Image.findAll({
+    order: [],
     include: [{ model: Location }, { model: User }],
-    order: []
   })
   res.json(images)
 }));
 
 // ADD/POST IMAGES
 const validateImage = [
-  //se puede checkea si url es valido?
   check('imageUrl')
     .isURL({ require_protocol: false, require_host: false })
     .withMessage('Please provide a valid Url.'),
