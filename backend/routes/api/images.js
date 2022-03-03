@@ -1,12 +1,11 @@
 const express = require('express')
 const router = express.Router();
 const asyncHandler = require('express-async-handler');
-const { requireAuth } = require('../../utils/auth')
-const { Image, Location, User } = require('../../db/models');
-
+const { setTokenCookie, requireAuth } = require('../../utils/auth')
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-
+const { singleMulterUpload, singlePublicFileUpload } = require("../../awsS3");
+const { Image, Location, User } = require('../../db/models');
 
 // GET IMAGES
 router.get('', asyncHandler(async (req, res) => {
@@ -14,14 +13,15 @@ router.get('', asyncHandler(async (req, res) => {
     order: [],
     include: [{ model: Location }, { model: User }],
   })
-  res.json(images)
+  return res.json(images)
 }));
 
 // ADD/POST IMAGES
+// check('imageUrl')
+//   .isURL({ require_protocol: false, require_host: false })
+//   .withMessage('Please provide a valid Url.'),
+
 const validateImage = [
-  check('imageUrl')
-    .isURL({ require_protocol: false, require_host: false })
-    .withMessage('Please provide a valid Url.'),
   check('imageTitle')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a bird name.')
@@ -38,20 +38,24 @@ const validateImage = [
   handleValidationErrors
 ];
 
-router.post('/add', validateImage, requireAuth, asyncHandler(async (req, res) => {
-  const { imageUrl, imageTitle, imageBody, locationId, albumId } = req.body
-  console.log(albumId)
-
-  const newBird = await Image.create({
-    userId: req.body.userId,
-    imageUrl,
-    imageTitle,
-    imageBody,
-    locationId,
-    albumId
-  })
-  return res.json(newBird)
-}));
+router.post(
+  '/add',
+  singleMulterUpload("imageUrl"),
+  requireAuth,
+  asyncHandler(async (req, res) => {
+    const { userId, imageTitle, imageBody, locationId, albumId } = req.body
+    const imageUrl = await singlePublicFileUpload(req.file);
+    // const imageUrl = 'hi'
+    const newBird = await Image.create({
+      userId,
+      imageUrl,
+      imageTitle,
+      imageBody,
+      locationId,
+      albumId
+    })
+    return res.json({ newBird })
+  }));
 
 // EDIT/PUT IMAGES
 const validateEdit = [

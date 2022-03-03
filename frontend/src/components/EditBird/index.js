@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import { BiArrowBack } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux"
-import { useHistory, useParams, Redirect } from "react-router-dom";
+import { useHistory, useParams, Redirect, NavLink } from "react-router-dom";
 import { getAllImages, editBirdImage } from "../../store/imagesReducer";
 import { getAllCountries } from "../../store/locationReducer";
 
@@ -22,14 +23,24 @@ const EditBird = () => {
 
   const birdByIdToEdit = images.find(bird => +bird?.id === +imageId)
 
+  const oldImageTitle = birdByIdToEdit?.imageTitle
+  const [imageTitle, setImageTitle] = useState(oldImageTitle);
 
+  const oldLocationId = birdByIdToEdit?.locationId
+  const [locationId, setLocatioId] = useState(oldLocationId);
 
-  const [imageTitle, setImageTitle] = useState('');
-  const [locationId, setLocatioId] = useState('');
-  const [imageBody, setImageBody] = useState('');
+  const oldImageBody = birdByIdToEdit?.imageBody
+  const [imageBody, setImageBody] = useState(oldImageBody);
+
   const [errors, setErrors] = useState([]);
 
-
+  useEffect(() => {
+    dispatch(getAllCountries());
+    dispatch(getAllImages());
+    setImageTitle(oldImageTitle)
+    setLocatioId(oldLocationId)
+    setImageBody(oldImageBody)
+  }, [dispatch, oldImageTitle, oldLocationId, oldImageBody])
 
   let countriesArrIdLocation = []
   for (let i = 0; i < countries.length; i++) {
@@ -38,12 +49,6 @@ const EditBird = () => {
     obj['location'] = countries[i].location
     countriesArrIdLocation.push(obj)
   }
-
-  useEffect(() => {
-    dispatch(getAllCountries());
-    dispatch(getAllImages());
-  }, [dispatch])
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -75,11 +80,13 @@ const EditBird = () => {
   return (
     <div className='contanier'>
       <div className="card">
-        <div className="card-image">
-          <h2 className="card-heading">
-            Edit: {birdByIdToEdit?.imageTitle}
-          </h2>
+        <div className='edit-card-image'>
+            <NavLink to='/images'>
+              <BiArrowBack id="edit-backToBirds" />
+            </NavLink>
+          <h2 className='edit-card-heading'> {birdByIdToEdit?.imageTitle}</h2>
         </div>
+          <img className="loginImage" src={birdByIdToEdit?.imageUrl} />
         <form onSubmit={handleSubmit} className="card-form">
           <ul className='formErrors'>
             {errors.map((error) => <li key={errors.indexOf(error)} className='loginErrors'>{error}</li>)}

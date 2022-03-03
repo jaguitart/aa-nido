@@ -7,6 +7,7 @@ import * as sessionActions from './store/session';
 import './index.css';
 import App from './App';
 import configureStore from './store';
+import { ModalProvider } from './components/context/Modal';
 
 const store = configureStore();
 
@@ -22,7 +23,9 @@ function Root() {
   return (
     <ReduxProvider store={store}>
       <BrowserRouter>
-        <App />
+        <ModalProvider>
+          <App />
+        </ModalProvider>
       </BrowserRouter>
     </ReduxProvider>
   );

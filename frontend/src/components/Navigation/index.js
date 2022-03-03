@@ -28,7 +28,7 @@ function Navigation({ isLoaded }) {
           <p id='emailNavBar'>{sessionUser.email}</p>
         </div>
         <div id='logOutLogoDiv'>
-          <MdLogout id="addSign" onClick={logout}/>
+          <MdLogout id="navbar-icons" onClick={logout} />
         </div>
       </div>
     );
@@ -42,26 +42,30 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <div className=''>
-      <div className='boxAroundNav divNavigation'>
-        <div className='logoBoxDiv'>
-          <NavLink exact to="/" className="navbarItem" id='navbarItemLeft'>
-            <img src={logo} className="nidoLogo" alt="nido logo" />
-          </NavLink>
-        </div>
-        <div className='navDiv'>
-          <NavLink exact to="/images" className="navbarItem" id='navbarItemLeft'>
-            <GiNestBirds id="addSign" />
-          </NavLink>
-          {sessionUser &&
+    <div className='navbar-alldiv'>
+      {/* <div className='boxAroundNav divNavigation'> */}
+      <div className='logoBoxDiv'>
+        <NavLink exact to="/" className="navbar-item" id='navbarItemLeft'>
+          <img src={logo} className="nidoLogo" alt="nido logo" />
+        </NavLink>
+      </div>
+      <div className='navbar-nesthome'>
+        <NavLink exact to="/images" className="navbar-item" id='navbarItemLeft'>
+          <GiNestBirds id="navbar-icons" />
+        </NavLink>
+      </div>
+      {sessionUser &&
+          <div className='navbar-add'>
             <NavLink to={`/images/add`}>
-              <FaPlus id="addSign" />
-            </NavLink>}
-          {isLoaded && sessionLinks}
+              <FaPlus id="navbar-icons" />
+            </NavLink>
+          </div>
+        }
+        <div>
+        {isLoaded && sessionLinks}
         </div>
-      </div>
-      <div className='blackSpace'>
-      </div>
+      {/* </div> */}
+      <div className='blackSpace' />
     </div>
   );
 }

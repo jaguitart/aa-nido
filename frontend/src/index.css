@@ -1,4 +1,11 @@
 /* TODO Add site wide styles */
+html, body, #page {
+	height:100%;
+	width:100%;
+	margin:0;
+	padding:0;
+}
+
 .container {
   box-sizing: border-box;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -13,6 +20,7 @@
 h3, h2{
   background-color: transparent;
   color: #011410;
+	font-size: 100%;
 }
 
 img {
@@ -39,31 +47,50 @@ img {
 
 .card-image {
 	border-radius: 8px;
-	padding-bottom: 45%;
+	padding-bottom: 25%;
 	/* background-image: url('https://cutewallpaper.org/23/white-feather-wallpaper/2390715812.jpg'); */
 	background-image: url('https://storage.googleapis.com/webdesignledger.pub.network/LaT/edd/2016/02/black-and-white-bird-animal-texture-1-780x520.jpg');
-	background-position-y: 267px;
-	background-position-x: -120px;
+	background-position-y: 238px;
+	background-position-x: -42px;
 	background-size: 150%;
 	position: relative;
 	transition: 1s;
 	box-shadow: 0px 0px 5px 1px rgba(94, 94, 94, 0.685);
 }
 
+.edit-card-image {
+	position: relative;
+	background-color: transparent
+}
+
 .card-heading {
 	position: absolute;
 	left: 10%;
-	top: 15%;
+	top: 5%;
 	right: 10%;
 	font-size: 1.75rem;
 	font-weight: 700;
 	line-height: 3;
 }
 
+.edit-card-heading {
+	/* position: absolute;
+	left: 10%;
+	top: 15%;
+	right: 10%; */
+	margin: 0px;
+	font-size: 1.75rem;
+	font-weight: 700;
+	line-height: 3;
+	padding: 0px;
+	text-align: center;
+}
+
 h3, h2 {
-  display: absolute;
+	display: absolute;
   font-size: .75em;
   font-weight: 400;
+	text-align: center;
   /* margin-top: .25em; */
 }
 
@@ -94,7 +121,7 @@ h2 {
   appearance: none;
 	border: 0;
 	margin-bottom: 15px;
-	z-index: 1;
+	z-index: 0;
 	background-color: transparent;
 	border-bottom: 2px solid rgb(192, 192, 192); 
 	font: inherit;
@@ -117,12 +144,44 @@ h2 {
 	color: #FFF;
 	border: 0;
   transition-duration: 0.8s;
+	cursor: pointer;
 }
 
 .action-button:hover {
   background-color: #ee7b0f;
 }
 
+.delete-action-button {
+	font: inherit;
+	font-size: 1rem;
+	padding: 0.5em;
+	width: 70px;
+	font-weight: 400;
+	background-color: #b95b03;
+	border-radius: 6px;
+	color: #FFF;
+	border: 0;
+  transition-duration: 0.8s;
+	cursor: pointer;
+	margin: 10px;
+}
+
+.delete-action-button:hover {
+  background-color: #ee7b0f;
+}
+
+.delete-modal-div {
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	padding: 15%;
+	align-items: center;
+
+}
+
+#delete-modal-text {
+	font-size: 18px;
+}
 
 .card-info {
 	padding: 1rem 1rem;

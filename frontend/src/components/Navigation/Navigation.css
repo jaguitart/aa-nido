@@ -1,34 +1,52 @@
-.divNavigation {
-  display: flex;
+.navbar-alldiv {
+  margin-top: 15px;
+  display: grid;
+  grid-template-columns: 3fr repeat(4, 1fr);
+  grid-template-rows: 2fr 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }
 
+  
+  .div1 { grid-area: 2 / 1 / 3 / 6; }
+  .logoBoxDiv { grid-area: 1 / 1 / 2 / 2; }
+  .navbar-nesthome { grid-area: 1 / 2 / 2 / 3; }
+  .navbar-add { grid-area: 1 / 3 / 2 / 4; }
+  .div5 { grid-area: 1 / 4 / 2 / 5; }
+  .div6 { grid-area: 1 / 5 / 2 / 6; }
+
+
+/* .divNavigation {
+  display: flex;
+} */
+
 .nidoLogo {
-  height: 100px;
-  max-width: 185px;
+  max-height: 80px;
+  max-width: 130px;
 }
 
 .logoBoxDiv{
-  margin-left: 200px;
+  margin-left: 30%;
 }
 
-.navDiv{
+/* .navDiv{
   display: flex;
   width: 100%;
 
   justify-content: flex-end;
-}
+} */
 
-#addSign{
+#navbar-icons{
   color: black;
   text-decoration: none;
   background:transparent;
-  font-size: 50px;
-  margin-right: 65px;
-  margin-top: 50px;
+  font-size: 35px;
+  /* margin-right: 65px;
+  margin-top: 50px; */
   cursor: pointer;
 }
 
-.profileAndAdd{
+/* .profileAndAdd{
   display: flex;
   margin-right: 200px; 
   align-items: center;
@@ -71,12 +89,4 @@
   padding: 20px;
   font-size: 25px;
   margin-top: 25px;
-}
-
-#logInNameNavBar {
-
-}
-
-#signUpNameNavBar {
-
-}
+} */

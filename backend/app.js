@@ -5,24 +5,25 @@ const csurf = require('csurf');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 
-const { ValidationError } = require('sequelize');
 const { environment } = require('./config');
-
+const { ValidationError } = require('sequelize');
+const routes = require('./routes');
 const isProduction = environment === 'production';
 
 const app = express();
-const routes = require('./routes');
 
 app.use(morgan('dev'));
+
 app.use(cookieParser());
-app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
 
 // Security Middleware
 if (!isProduction) {
   app.use(cors());
 }
+
 app.use(helmet({
   contentSecurityPolicy: false
 }));

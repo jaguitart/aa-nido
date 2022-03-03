@@ -237,3 +237,18 @@ color: rgb(0, 0, 0);
   color:rgb(216, 216, 216);
 }
 
+#edit-backToBirds {
+  position:absolute;
+  margin-top: 0px;
+  color:rgb(92, 92, 92);
+  background-color: transparent;
+  font-size: 40px;
+  text-decoration:none;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+#edit-backToBirds:hover  {
+  color:rgb(216, 216, 216);
+}
+

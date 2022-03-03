@@ -10,7 +10,7 @@ const AddBird = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [imageTitle, setImageTitle] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
+  const [imageUrl, setImageUrl] = useState(null);
   const [locationId, setLocatioId] = useState('');
   const [imageBody, setImageBody] = useState('');
   // const [albumId, setAlbumId] = useState('');
@@ -32,7 +32,7 @@ const AddBird = () => {
     dispatch(getAllCountries());
   }, [dispatch])
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
     const newBird = {
@@ -44,19 +44,18 @@ const AddBird = () => {
       //hardcoded until feature creation
       albumId: 1
     };
-
-    return dispatch(addBirdImages(newBird))
-      .then(res => {
-        if (res.ok) {
-          setErrors([]);
-          history.push(`/images`);
-        }
-      })
-      .catch(async res => {
-        const info = await res.json();
-        setErrors(info.errors)
-      })
+    const added = await dispatch(addBirdImages(newBird))
+    if (added) {
+      setErrors([]);
+      history.push(`/images`);
+    }
   };
+
+
+  const updateFile = e => {
+    const file = e.target.files[0];
+    if (file) setImageUrl(file);
+  }
 
   if (!sessionUser) return (
     <Redirect to="/" />
@@ -67,7 +66,7 @@ const AddBird = () => {
       <div className="card">
         <div className="card-image">
           <h2 className="card-heading">
-            Create a Bird
+            Share a Bird
           </h2>
         </div>
         <form onSubmit={handleSubmit} className="card-form">
@@ -76,11 +75,12 @@ const AddBird = () => {
           </ul>
           <div className="input">
             <input
+              type='file'
               className="input-field"
-              onChange={(e) => setImageUrl(e.target.value)}
-              value={imageUrl}
+              onChange={updateFile}
+              required
             />
-            <label htmlFor='imageUrl' className='input-label'>Bird Url</label>
+            <label htmlFor='imageUrl' className='input-label'>Upload your bird image</label>
           </div>
           <div className="input">
             <input
@@ -88,7 +88,7 @@ const AddBird = () => {
               onChange={(e) => setImageTitle(e.target.value)}
               value={imageTitle}
             />
-            <label htmlFor='imageTitle' className='input-label'>Bird Name</label>
+            <label htmlFor='imageTitle' className='input-label'>What is the bird name?</label>
           </div>
           <div className="input">
             <textarea
@@ -96,7 +96,7 @@ const AddBird = () => {
               onChange={(e) => setImageBody(e.target.value)}
               value={imageBody}
             />
-            <label htmlFor='imageBody' className='input-label'>Bird comments</label>
+            <label htmlFor='imageBody' className='input-label'>Share more about the bird or the location</label>
           </div>
           <div className="input">
             <select
@@ -114,7 +114,7 @@ const AddBird = () => {
                 </option>
               ))}
             </select>
-            <label htmlFor='locationId' className='input-label'>Bird Location</label>
+            <label htmlFor='locationId' className='input-label'>Where did you find it?</label>
           </div>
           <div className='action'>
             <button type='submit' className='action-button'>Submit</button>

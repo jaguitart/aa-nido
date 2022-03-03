@@ -6,24 +6,24 @@ import { useParams, useHistory, NavLink } from 'react-router-dom';
 import { getAllImages, removeBirdImage } from "../../store/imagesReducer";
 import { getComments } from "../../store/commentsReducer";
 import { addAComment, removeAComment } from "../../store/commentsReducer";
+import { Modal } from "../context/Modal";
 import './BirdPage.css';
 
-const BirdPage = () => {
+const BirdPage = ({ birdImages }) => {
   const params = useParams();
   const { imageId } = params;
   const history = useHistory();
   const dispatch = useDispatch();
+
+  const [showModal, setShowModal] = useState(false);
+  const updateShowModal = () => setShowModal(true)
 
   //need for comments
   const [commentHeader, setCommentHeader] = useState('');
   const [commentBody, setCommentBody] = useState('');
   const sessionUser = useSelector(state => state.session.user);
   const [errors, setErrors] = useState([]);
-
-  const imagesObj = useSelector(state => state.imagesReducer);
-  const images = Object.values(imagesObj);
-  const birdById = images.find(bird => +bird?.id === +imageId);
-
+  const birdById = birdImages.find(bird => +bird?.id === +imageId);
   const commentsObj = useSelector(state => state.commentsReducer);
   const comments = Object.values(commentsObj)
   const commentsForThisImage = comments.filter((comment) => comment.imageId === +imageId)
@@ -80,7 +80,20 @@ const BirdPage = () => {
           </div>
           <div className='imgDiv'>
             {sessionUser && sessionUser.id === birdById?.userId &&
-              <BiX id="deleBirdX" onClick={() => handleRemove(imageId)} />
+              <>
+                <BiX id="deleBirdX" onClick={updateShowModal} />
+                {showModal && (
+                  <Modal onClose={() => setShowModal(!showModal)}>
+                    <div className="delete-modal-div">
+                      <h2 id="delete-modal-text">Are you sure to delete this picture?</h2>
+                      <div>
+                        <button className="delete-action-button" onClick={() => handleRemove(imageId)}>Delete</button>
+                        <button className="delete-action-button" onClick={() => setShowModal(!showModal)}>Cancel</button>
+                      </div>
+                    </div>
+                  </Modal>
+                )}
+              </>
             }
             {sessionUser && sessionUser.id === birdById?.userId &&
               <NavLink to={`/images/${imageId}/edit`}>
@@ -109,7 +122,7 @@ const BirdPage = () => {
                   </div>
                   <p className='textos' id='textoBody'>{comment?.commentBody}</p>
                   {sessionUser && sessionUser.id === comment?.userId &&
-                      <BiX id="delete2" onClick={() => handleDelete(comment?.id)}/>
+                    <BiX id="delete2" onClick={() => handleDelete(comment?.id)} />
                   }
                 </div>
               )}
