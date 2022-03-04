@@ -97,7 +97,7 @@ const EditBird = () => {
               onChange={(e) => setImageTitle(e.target.value)}
               value={imageTitle}
             />
-            <label htmlFor='imageTitle' className='input-label'>Bird Name</label>
+            <label htmlFor='imageTitle' className='input-label'>New bird Name</label>
           </div>
           <div className="input">
             <textarea
@@ -105,7 +105,7 @@ const EditBird = () => {
               onChange={(e) => setImageBody(e.target.value)}
               value={imageBody}
             />
-            <label htmlFor='imageBody' className='input-label'>Bird comments</label>
+            <label htmlFor='imageBody' className='input-label'>New bird info</label>
           </div>
           <div className="input">
             <select
