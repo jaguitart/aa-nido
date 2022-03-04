@@ -7,6 +7,7 @@ import { getAllImages, removeBirdImage } from "../../store/imagesReducer";
 import { getComments } from "../../store/commentsReducer";
 import { addAComment, removeAComment } from "../../store/commentsReducer";
 import { Modal } from "../context/Modal";
+import EditCommentForm from "../EditCommentForm";
 import './BirdPage.css';
 
 const BirdPage = ({ birdImages }) => {
@@ -69,6 +70,20 @@ const BirdPage = ({ birdImages }) => {
     history.push(`/images/${imageId}`);
   }
 
+
+  //////////////
+  const [editPopUp, setEditPopUp] = useState(false)
+  const [openThisPopUp, setOpenThisPopUp] = useState('')
+  const openPopUp = (e) => {
+    setOpenThisPopUp(+e.target.className.baseVal)
+    setEditPopUp(!editPopUp)
+  }
+
+  const sendDataToParent = (data) => {
+    setEditPopUp(data)
+    setOpenThisPopUp('')
+  }
+
   return (
     <div>
       <div>
@@ -116,13 +131,20 @@ const BirdPage = ({ birdImages }) => {
             <div className='commentsTextDiv'>
               {commentsForThisImage.map(comment =>
                 <div className='textDiv2' key={comment?.id}>
-                  <div id='userTitle'>
-                    <p className='usuarioComments'>{comment?.User?.username}:</p>
-                    <p className='textos' id='textoHeader'>{comment?.commentHeader}</p>
-                  </div>
-                  <p className='textos' id='textoBody'>{comment?.commentBody}</p>
                   {sessionUser && sessionUser.id === comment?.userId &&
                     <BiX id="delete2" onClick={() => handleDelete(comment?.id)} />
+                  }
+                  <div id='userTitle'>
+                    <p className='usuarioComments'>{comment.User?.username}:</p>
+                  </div>
+                  {editPopUp && comment.id === openThisPopUp && (
+                    <EditCommentForm comment={comment} editState={editPopUp} imageId={imageId} sendDataToParent={sendDataToParent} />
+                  )}
+                  <p className='textos' id='textoBody'>{comment?.commentBody}</p>
+                  {sessionUser && sessionUser.id === comment?.userId &&
+                    (
+                        <BiEditAlt className={comment.id} id="edit-comment-edit" onClick={openPopUp} />
+                    )
                   }
                 </div>
               )}
@@ -136,7 +158,7 @@ const BirdPage = ({ birdImages }) => {
                       {errors.map((error) => <li key={errors.indexOf(error)} id='erroresComments' className='loginErrors'>{error}</li>)}
                     </ul>
                   </div>
-                  <div className="input" id='inputTextComment'>
+                  {/* <div className="input" id='inputTextComment'>
                     <input
                       className="input-field"
                       id='textComment'
@@ -144,14 +166,14 @@ const BirdPage = ({ birdImages }) => {
                       value={commentHeader}
                       placeholder='Comment title here...'
                     />
-                  </div>
+                  </div> */}
                   <div className="input" id='commentsForm'>
                     <textarea
                       id='textCommentArea'
                       className="input-field"
                       onChange={(e) => setCommentBody(e.target.value)}
                       value={commentBody}
-                      placeholder='Comment here...'
+                      placeholder='Share your thoughts...'
                     />
                   </div>
                   <div className='commentButtonDiv'>

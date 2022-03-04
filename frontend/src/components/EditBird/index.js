@@ -81,12 +81,12 @@ const EditBird = () => {
     <div className='contanier'>
       <div className="card">
         <div className='edit-card-image'>
-            <NavLink to='/images'>
+            <NavLink to={`/images/${imageId}`}>
               <BiArrowBack id="edit-backToBirds" />
             </NavLink>
           <h2 className='edit-card-heading'> {birdByIdToEdit?.imageTitle}</h2>
         </div>
-          <img className="loginImage" src={birdByIdToEdit?.imageUrl} />
+          <img className="loginImage" src={birdByIdToEdit?.imageUrl} alt={`edit ${birdByIdToEdit.imageTitle}`} />
         <form onSubmit={handleSubmit} className="card-form">
           <ul className='formErrors'>
             {errors.map((error) => <li key={errors.indexOf(error)} className='loginErrors'>{error}</li>)}

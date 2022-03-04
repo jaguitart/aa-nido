@@ -49,6 +49,11 @@
   background-color: transparent;
 }
 
+.textos {
+  position: relative;
+  padding-right: 80px;
+}
+
 .title, .location, .body, .user {
   font-family: 'georgia';
   margin: 0px 40px;
@@ -81,7 +86,7 @@
 }
 .textsDiv {
   background-color: rgba(238, 238, 238, 0.993);
-  width: 45%;
+  width: 55%;
   margin-left: 10%;
   margin-right: 20px;
   border-radius: 5px;
@@ -94,7 +99,8 @@
 
 .commentsDiv {
   background-color: rgba(238, 238, 238, 0.993);
-  width: 55%;
+  width: 45%;
+  min-width: 400px;
   margin-right: 10%;
   margin-left: 20px;
   border-radius: 5px;
@@ -142,25 +148,48 @@
 }
 
 .textDiv2 {
-  padding-top: 15px;
-  padding-left: 60px;
+  padding-top: 0px;
+  padding-left: 40px;
+  padding-top: 0px;
   border-radius: 5px;
   margin-bottom: 15px;
   border: 1px solid rgb(187, 187, 187);
+  
 }
 
 #delete2 {
   position: relative;
-  top: -68px;
-  left: 90%;
+  /* bottom: 140%; */
+  top: 20px;
+  right: -90%;
+  margin: 0px;
   font-size: 25px;
-  color:rgba(26, 26, 26, 0.74);
-  text-decoration:none;
+  color:rgba(70, 70, 70, 0.74);
+  /* text-decoration:none; */
   cursor: pointer;
   transition: 0.2s;
+  z-index: 1;
 }
 
 #delete2:hover {
+color: rgb(0, 0, 0);
+}
+
+#edit-comment-edit {
+  position: relative;
+  background-color: transparent;
+  top: -10px;
+  right: -90%;
+  font-size: 20px;
+  color:rgba(70, 70, 70, 0.74);
+  text-decoration:none;
+  cursor: pointer;
+  transition: 0.2s;
+  margin: 10px;
+  z-index: 1;
+}
+
+#edit-comment-edit:hover {
 color: rgb(0, 0, 0);
 }
 
@@ -177,7 +206,7 @@ color: rgb(0, 0, 0);
 
 #textoBody {
   margin-top: 0px;
-  margin-left: 80px;
+  margin-left: 10px;
   font-size: 14px;
   font-family: Verdana, sans-serif;
 }

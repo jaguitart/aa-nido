@@ -1,0 +1,39 @@
+.hidden-submit {
+  display: none;
+}
+
+.edit-comment-input {
+  position: relative;
+  bottom: -60px;
+  left: 30px;
+  /* border: 1px solid lightgray; */
+  margin: 0px;
+  margin-left: -5px;
+  font-size: 14px;
+  background-color: white;
+  min-width: 70%;
+  width: 90%;
+  min-height: 3.3rem;
+  z-index: 1;
+  padding: 0px;
+  overflow: auto;
+  /* border: ridge 2px; */
+  background-color: rgba(238, 238, 238, 0.993);
+}
+
+.edit-your-comment {
+  margin: 0;
+  padding: 0;
+}
+
+#edit-comment-div {
+  position: relative;
+  top: -60px;
+  background-color: rgba(238, 238, 238, 0.993);
+  margin: 0px;
+  height: 0px;
+}
+
+#hehehe {
+  background-color: aqua;
+}

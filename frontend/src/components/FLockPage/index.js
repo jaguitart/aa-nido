@@ -1,8 +1,9 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect } from "react";
-import { getAllImages, removeBirdImage } from "../../store/imagesReducer";
+import { getAllImages } from "../../store/imagesReducer";
 import { NavLink } from "react-router-dom";
+import { RiMapPinUserFill } from "react-icons/ri";
 import './FlockPage.css';
 
 const FlockPage = ({ birdImages }) => {
@@ -16,10 +17,10 @@ const FlockPage = ({ birdImages }) => {
     dispatch(getAllImages());
   }, [dispatch])
 
-  const handleRemove = (id, e) => {
-    e.stopPropagation();
-    dispatch(removeBirdImage(id))
-  }
+  // const handleRemove = (id, e) => {
+  //   e.stopPropagation();
+  //   dispatch(removeBirdImage(id))
+  // }
 
   return (
     <div>
@@ -35,11 +36,9 @@ const FlockPage = ({ birdImages }) => {
                 <p className='imgTitle'>{image?.imageTitle}</p>
                 <p className='imgLocation'>{image?.Location?.location}</p>
                 <p className='userName'>by: {image?.User?.username}</p>
-                {/* {birdsOwned.includes(image?.id) &&
-                  < to={`images/${image?.id}/edit`}>
-                    <BiEditAlt id="edit" />
-                  </>
-                } */}
+                {birdsOwned.includes(image?.id) &&
+                  <RiMapPinUserFill id="edit" />
+                }
                 {/* {birdsOwned.includes(image?.id) &&
                   <p onClick={() => handleRemove(this.image.id)}>
                     <BiX id="delete" />
