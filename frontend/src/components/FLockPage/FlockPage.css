@@ -68,9 +68,11 @@
   margin:auto;
   margin-top: 10px;
 	text-align:left;
-	font-size: 130%;
+	font-size: 20px;
   font-weight:500;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .imgLocation {
@@ -138,3 +140,133 @@
 #expand:hover {
   color: rgba(197, 197, 197, 0.74);
 }
+
+@media (max-width:1600px) {
+  .imgsContainer {
+    padding-right:10%;
+    padding-left:10%;
+    line-height: 0;
+    -webkit-column-count: 4;
+    -webkit-column-gap: 0px;
+    -moz-column-count: 4;
+    -moz-column-gap: 0px;
+    column-count: 4;
+    column-gap: 0.4%;
+  }
+  }
+
+@media (max-width:1200px) {
+  .imgsContainer {
+    padding-right:10%;
+    padding-left:10%;
+    line-height: 0;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 0px;
+    -moz-column-count: 3;
+    -moz-column-gap: 0px;
+    column-count: 3;
+    column-gap: 0.4%;
+  }
+  }
+
+@media (max-width:935px) {
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .imgsContainer {
+    /* padding-right:10%; */
+    padding-left: 8%;
+    line-height: 0;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 0px;
+    -moz-column-count: 2;
+    -moz-column-gap: 0px;
+    column-count: 2;
+    column-gap: 0.4%;
+  }
+
+  }
+    
+
+@media (max-width:700px) {
+  * {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .imgsContainer {
+    position: relative;
+    left: 10%;
+    padding-right:0%;
+    padding-left:0%;
+    line-height: 0;
+    -webkit-column-count: 1;
+    -webkit-column-gap: 0px;
+    -moz-column-count: 1;
+    -moz-column-gap: 0px;
+    column-count: 1;
+    column-gap: 0.4%;
+  }
+
+  .imgContainer img {
+    width: 110% !important;
+    height: auto !important;
+    margin: 0;
+    padding: 0;
+
+  }
+
+  #flockTitle {
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: lighter;
+    color: rgb(53, 53, 53);
+    /* position: relative; */
+    left: 10%;
+    right: 0px;
+    align-items: flex-start;
+    width: 300px;
+    max-width: 100%;
+    font-size: 21px;
+    /* max-width: 100%; */
+    margin: 0;
+    padding: 0;
+    border: none;
+    margin-bottom: 15px; 
+    /* margin-top: 40px; */
+  }
+
+  h1 {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  #root {
+    margin: 0;
+    padding: 0;
+  }
+
+  #edit {
+    margin: 0;
+    padding: 0;
+  }
+
+  .textDiv {
+    display: none;
+    margin: 0;
+  }
+
+  .imgContainer:hover .textDiv,
+  .imgContainer.active .textDiv {
+    display: none;
+  }
+  #flockpage-img-div {
+    width: 80%;
+  }
+  }
+    
+
