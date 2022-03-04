@@ -1,7 +1,7 @@
 .imgSingleDiv {
   display: flex;
   flex-direction: column;
-  background-color: rgba(8, 8, 8, 0.822);
+  background-color: #4d4d4d;
   padding: 80px 0px;
   align-items: center;
   justify-content:center;
@@ -10,7 +10,7 @@
 .imgSingleBird {
   max-width: 1000px;
   max-height: 600px;
-  box-shadow: 0px 0px 120px 20px rgb(0, 0, 0);
+  box-shadow: 0px 0px 20px 5px rgb(43, 43, 43);
 }
 
 .imgDiv{
