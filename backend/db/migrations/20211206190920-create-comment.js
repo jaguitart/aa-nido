@@ -22,7 +22,7 @@ module.exports = {
         type: Sequelize.STRING(300)
       },
       commentBody: {
-        type: Sequelize.TEXT
+        type: Sequelize.STRING(300)
       },
       createdAt: {
         allowNull: false,

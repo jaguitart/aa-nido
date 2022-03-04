@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     commentHeader: {
       type: DataTypes.STRING(300),
-      allowNull: false,
+      // allowNull: false,
     },
     commentBody: {
       type: DataTypes.TEXT,

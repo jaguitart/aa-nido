@@ -16,14 +16,16 @@ router.get('', asyncHandler(async (req, res) => {
 
 // ADD/POST COMMENT
 const validateComment = [
-  check('commentHeader')
-    .exists({ checkFalsy: true })
-    .withMessage('Please provide a comment title.')
-    .isLength({ max: 300 })
-    .withMessage('Please provide a comment with max length 300 characters.'),
+  // check('commentHeader')
+  // .exists({ checkFalsy: true })
+  // .withMessage('Please provide a comment title.')
+  // .isLength({ max: 300 })
+  // .withMessage('Please provide a comment with max length 300 characters.'),
   check('commentBody')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide a comment body.'),
+    .withMessage('Please provide a comment body.')
+    .isLength({ max: 300 })
+    .withMessage('Please provide a comment with max length 300 characters.'),
   handleValidationErrors
 ];
 
@@ -39,20 +41,20 @@ router.post('/:id/addComment', validateComment, requireAuth, asyncHandler(async 
 }));
 
 // // EDIT/PUT COMMENTS
-// router.put('/:id/addComment/:commentId/edit', validateComment, requireAuth, asyncHandler(async (req, res) => {
-//   const { imageTitle, imageBody, locationId } = req.body;
-//   const { commentId } = req.params;
-//   const editComment = await Comment.findByPk(commentId)
-//   //agregar la validacion
-//   await editComment.update({
-//     userId,
-//     imageId,
-//     commentHeader,
-//     commentBody
-//   })
-//   const editComment = await Comment.findByPk(commentId);
-//   return res.json()
-// }));
+router.put('/:id/addComment/:commentId/edit', validateComment, requireAuth, asyncHandler(async (req, res) => {
+  const { userId, imageId, commentHeader, commentBody } = req.body;
+  const { commentId } = req.params;
+  const editComment = await Comment.findByPk(commentId, {
+    include: [{ model: User }]
+  })
+  await editComment.update({
+    userId,
+    imageId,
+    commentHeader,
+    commentBody
+  })
+  return res.json(editComment)
+}));
 
 
 // //DELETE COMMENTS
