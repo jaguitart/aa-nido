@@ -46,7 +46,7 @@ h3, h2{
 .card2 {
   z-index: 1;
   border: solid 5px #a1540c;;
-	margin: 2rem auto;
+	margin: 1rem auto;
 	display: flex;
 	flex-direction: column;
 	width: 100%;
