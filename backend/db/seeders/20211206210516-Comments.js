@@ -39,7 +39,7 @@ module.exports = {
         userId: 2,
         imageId: 57,
         commentHeader: '',
-        commentBody: 'Simply beautiful,awesome work',
+        commentBody: 'Simply beautiful, awesome work',
         createdAt: new Date(),
         updatedAt: new Date()
       }
