@@ -1,74 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { FiUser } from "react-icons/fi";
-import { MdLogout } from "react-icons/md";
-// import { NavLink } from 'react-router-dom';
-// import { useSelector } from 'react-redux';
-import UserInfo from './UserInfo'
-import './Navigation.css';
-import * as sessionActions from '../../store/session';
-import logo from '../public/img/logo.png'
-
-// function Navigation({ isLoaded }) {
-//   const sessionUser = useSelector(state => state.session.user);
-
-
-//   let sessionLinks;
-//   if (sessionUser) {
-//     sessionLinks = (
-//       <div className='profileAndAdd'>
-//         <div id='userTexts'>
-//           <p id='userNameNavBar'>{sessionUser.username}</p>
-//           <p id='emailNavBar'>{sessionUser.email}</p>
-//         </div>
-//         <div id='logOutLogoDiv'>
-//           <MdLogout id="navbar-icons" onClick={logout} />
-//         </div>
-//       </div>
-//     );
-//   } else {
-//     sessionLinks = (
-//       <div className='profileAndAdd'>
-//         <NavLink to="/login" id='logInNameNavBar'>Log In</NavLink>
-//         <NavLink to="/signup" id='signUpNameNavBar'>Sign Up</NavLink>
-//       </div>
-//     );
-//   }
-
-//   return (
-//     <div className='navbar-alldiv'>
-//       {/* <div className='boxAroundNav divNavigation'> */}
-//       <div className='logoBoxDiv'>
-//         <NavLink exact to="/" className="navbar-item" id='navbarItemLeft'>
-//           <img src={logo} className="nidoLogo" alt="nido logo" />
-//         </NavLink>
-//       </div>
-//       <div className='navbar-nesthome'>
-//         <NavLink exact to="/images" className="navbar-item" id='navbarItemLeft'>
-//           <GiNestBirds id="navbar-icons" />
-//         </NavLink>
-//       </div>
-//       {sessionUser &&
-//           <div className='navbar-add'>
-//             <NavLink to={`/images/add`}>
-//               <FaPlus id="navbar-icons" />
-//             </NavLink>
-//           </div>
-//         }
-//         <div>
-//         {isLoaded && sessionLinks}
-//         </div>
-//       {/* </div> */}
-//       <div className='blackSpace' />
-//     </div>
-//   );
-// }
-
-// export default Navigation;
-
-// import React from 'react';
-import { useSelector } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import * as sessionActions from '../../store/session';
+import UserInfo from './UserInfo'
+import logo from '../public/img/logo.png'
+import { MdLogout } from "react-icons/md";
+import { FiUser } from "react-icons/fi";
+import './Navigation.css';
 
 
 const Navigation = ({ isLoaded }) => {
