@@ -13,17 +13,17 @@ const loadImages = images => ({
 
 const addImage = image => ({
   type: ADD_IMAGE,
-  payload:image
+  payload: image
 });
 
 const editImage = image => ({
   type: EDIT_IMAGE,
-  payload:image
+  payload: image
 });
 
 const removeImage = image => ({
   type: REMOVE_IMAGE,
-  payload:image
+  payload: image
 });
 
 // SELECTORS
@@ -46,14 +46,16 @@ export const addBirdImages = newBird => async dispatch => {
   // for (let key of formData.entries()) {
   //   console.log(key[0] + ', ' + key[1])
   // }
-  const res = await csrfFetch('/api/images/add', {
+  const res = await csrfFetch(`/api/images/add`, {
     method: "POST",
     headers: { "Content-Type": "multipart/form-data" },
     body: formData,
   });
-  const addedBird = await res.json();
-  dispatch(addImage(addedBird));
-  return res;
+  if (res.ok) {
+    const addedBird = await res.json();
+    dispatch(addImage(addedBird));
+    return res;
+  }
 }
 
 export const editBirdImage = (id, editedBird) => async (dispatch) => {
@@ -82,35 +84,35 @@ export const removeBirdImage = (id) => async (dispatch) => {
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
-    let newState;
-    switch (action.type) {
+  let newState;
+  switch (action.type) {
 
-        case LOAD_IMAGES:
-            newState = { }
-            action.payload.map(image => newState[image.id] = image)
-            return newState
+    case LOAD_IMAGES:
+      newState = {}
+      action.payload.map(image => newState[image.id] = image)
+      return newState
 
-        case ADD_IMAGE:
-            newState = {
-                ...state,
-                [action.payload.id]: action.payload
-            }
-            return newState
+    case ADD_IMAGE:
+      newState = {
+        ...state,
+        [action.payload.id]: action.payload
+      }
+      return newState
 
-        case EDIT_IMAGE:
-            state[action.payload.id] = action.payload;
-            newState = { ...state };
-            return newState
+    case EDIT_IMAGE:
+      state[action.payload.id] = action.payload;
+      newState = { ...state };
+      return newState
 
-        case REMOVE_IMAGE:
-            newState = { ...state }
-            delete newState[action.payload]
-            return newState
+    case REMOVE_IMAGE:
+      newState = { ...state }
+      delete newState[action.payload]
+      return newState
 
 
-        default:
-            return state;
-    }
+    default:
+      return state;
+  }
 }
 
 
