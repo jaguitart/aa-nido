@@ -70,8 +70,6 @@ const BirdPage = ({ birdImages }) => {
     history.push(`/images/${imageId}`);
   }
 
-
-  //////////////
   const [editPopUp, setEditPopUp] = useState(false)
   const [openThisPopUp, setOpenThisPopUp] = useState('')
   const openPopUp = (e) => {
@@ -129,7 +127,7 @@ const BirdPage = ({ birdImages }) => {
             <p className='title'>{birdById?.imageTitle}</p>
             <p className='location'>{birdById?.Location?.location}</p>
             <p className='user'>by: {birdById?.User?.username}</p>
-            <p className='body'>{birdById?.imageBody}</p>
+            <p id='bidpage-birdescription' className='body'>{birdById?.imageBody}</p>
           </div>
 
           <div className='commentsDiv'>
@@ -148,7 +146,7 @@ const BirdPage = ({ birdImages }) => {
                   <p className='textos' id='textoBody'>{comment?.commentBody}</p>
                   {sessionUser && sessionUser.id === comment?.userId &&
                     (
-                        <BiEditAlt className={comment.id} id="edit-comment-edit" onClick={openPopUp} />
+                      <BiEditAlt className={comment.id} id="edit-comment-edit" onClick={openPopUp} />
                     )
                   }
                 </div>
@@ -163,15 +161,7 @@ const BirdPage = ({ birdImages }) => {
                       {errors.map((error) => <li key={errors.indexOf(error)} id='erroresComments' className='loginErrors'>{error}</li>)}
                     </ul>
                   </div>
-                  {/* <div className="input" id='inputTextComment'>
-                    <input
-                      className="input-field"
-                      id='textComment'
-                      onChange={(e) => setCommentHeader(e.target.value)}
-                      value={commentHeader}
-                      placeholder='Comment title here...'
-                    />
-                  </div> */}
+
                   <div className="input" id='commentsForm'>
                     <textarea
                       id='textCommentArea'

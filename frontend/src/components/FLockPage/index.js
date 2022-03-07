@@ -32,7 +32,7 @@ const FlockPage = ({ birdImages }) => {
       <h1 id='flockTitle'>Explore birds from South America</h1>
       <div className='imgsContainer'>
         {birdImages.map(image => (
-          <div className='imgContainer' key={image.id}>
+          <div id='imgContainer' className='imgContainer' key={image.id}>
             <NavLink to={`/images/${image.id}`}>
               <div id='flockpage-img-div'>
                 <img className='img' key={image.id} src={image?.imageUrl} alt={`bird ${image.imageTitle}`} />

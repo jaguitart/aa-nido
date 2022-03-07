@@ -43,6 +43,8 @@
   margin-top: 20px;
   margin-bottom: 40px;
   display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .textos, .textDiv2, .title, .location, .user, .body, .textDiv, .commentFormDiv, .text  {
@@ -80,29 +82,40 @@
   font-size: 15px;
 }
 
-.body {
+
+#bidpage-birdescription {
   font-size: 16px;
-  margin-bottom: 20px;
-}
-.textsDiv {
-  background-color: rgba(238, 238, 238, 0.993);
-  width: 55%;
-  margin-left: 10%;
-  margin-right: 20px;
-  border-radius: 5px;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 40px;
+  padding-right: 40px;
+  padding-left: 40px;
 }
 
-.textos, .textDiv2, .commentForm, .commentButtonDiv {
+.textsDiv {
+  background-color: rgba(238, 238, 238, 0.993);
+  height: auto;
+  width: 350px;
+  min-width: 42%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.textos, .textDiv2, .commentForm {
   background-color: rgba(238, 238, 238, 0.993);
   padding-left: 20px;
 }
 
 .commentsDiv {
   background-color: rgba(238, 238, 238, 0.993);
-  width: 45%;
-  min-width: 400px;
-  margin-right: 10%;
-  margin-left: 20px;
+  min-width: 42%;
+  width: 400px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 5px;
 }
 
@@ -112,8 +125,16 @@
 }
 
 .commentButtonDiv{
+  display: flex;
+  max-width: 400px;
+  padding: 0;
+  margin: 0;
+  background-color: rgba(238, 238, 238, 0.993);
   padding-bottom: 20px;
-  margin-left: 25%;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .commentButton {
@@ -280,4 +301,3 @@ color: rgb(0, 0, 0);
 #edit-backToBirds:hover  {
   color:rgb(216, 216, 216);
 }
-

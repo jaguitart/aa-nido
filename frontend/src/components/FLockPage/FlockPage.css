@@ -191,9 +191,10 @@
     
 
 @media (max-width:700px) {
-  * {
+  #imgContainer {
     width: 100%;
     margin: 0;
+    margin-bottom: 5px;
     padding: 0;
   }
 
@@ -267,6 +268,30 @@
   #flockpage-img-div {
     width: 80%;
   }
+
+
+  .imgSingleBird {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  #deleBirdX {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 90px;
+    left: 90%;
+  }
+  
+  #editBirdX {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    top: 40px;
+    left: 80%;
+  }
+
   }
     
 

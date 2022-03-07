@@ -106,7 +106,6 @@ transition: 1s;
 }
 
 .navBarDiv {
-  /* border: red solid 1px; */
   display: flex;
   background-color: #3b3b3b;
   /* justify-content:space-between; */
