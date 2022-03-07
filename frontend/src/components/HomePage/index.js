@@ -13,7 +13,6 @@ const HomePage = () => {
   );
 
   return (
-    <div>
       <div id='allHome'>
         <img src={backgroundNido} className="homeBackground" alt="homeBackground" />
         <div className="container2">
@@ -21,7 +20,7 @@ const HomePage = () => {
             <div className="card-image2">
               <h2 className="card-heading2">
                 Welcome to
-              <img src={logo} id="home-logo" alt="homeBackground" />
+                <img src={logo} id="home-logo" alt="homeBackground" />
               </h2>
             </div>
             <div className='action2'>
@@ -43,7 +42,6 @@ const HomePage = () => {
           </div>
         </div>
       </div>
-    </div>
   )
 };
 
