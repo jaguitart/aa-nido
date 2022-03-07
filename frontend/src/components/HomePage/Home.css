@@ -1,5 +1,7 @@
 .homeBackground{
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   opacity: 0.15;
 }
 
@@ -14,6 +16,12 @@ overflow: hidden;
   grid-column-end: 3;
   pointer-events: none;
   z-index: 0;
+}
+
+#home-logo {
+  margin-left: 85px;
+  max-height: 100%;
+  max-width: 162px
 }
 
 
@@ -67,12 +75,14 @@ h3, h2{
 
 .card-heading2 {
   z-index: 1;
+  font-family: sans-serif;
+  font-style: normal;
 	position: absolute;
-	left: 10%;
+	left: 40px;
 	top: 10%;
 	right: 10%;
 	font-size: 1.9rem;
-	font-weight: 900;
+	font-weight: 600;
 	line-height: 1.22;
 }
 

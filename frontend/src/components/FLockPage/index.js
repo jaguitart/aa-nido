@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { getAllImages } from "../../store/imagesReducer";
 import { NavLink } from "react-router-dom";
 import { RiMapPinUserFill } from "react-icons/ri";
+import { Redirect } from "react-router-dom";
 import './FlockPage.css';
 
 const FlockPage = ({ birdImages }) => {
@@ -21,6 +22,10 @@ const FlockPage = ({ birdImages }) => {
   //   e.stopPropagation();
   //   dispatch(removeBirdImage(id))
   // }
+
+  if (!sessionUser) return (
+    <Redirect to="/" />
+  );
 
   return (
     <>

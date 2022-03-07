@@ -1,3 +1,19 @@
 *{
   background-color: rgb(255, 255, 255);
 }
+
+#navlink-text {
+  margin-left: 10px;
+  background-color: transparent;
+  font-family: sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+#navlink-signup {
+  background-color: transparent;
+  font-size: 15px;
+  font-weight: 300;
+  font-family: sans-serif;
+}

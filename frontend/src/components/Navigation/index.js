@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { FaPlus } from "react-icons/fa";
-import { GiNestBirds } from "react-icons/gi";
+import { FiUser } from "react-icons/fi";
 import { MdLogout } from "react-icons/md";
 // import { NavLink } from 'react-router-dom';
 // import { useSelector } from 'react-redux';
+import UserInfo from './UserInfo'
 import './Navigation.css';
 import * as sessionActions from '../../store/session';
 import logo from '../public/img/logo.png'
@@ -69,19 +69,20 @@ import logo from '../public/img/logo.png'
 // import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
-import { BsInfoSquare } from "react-icons/bs";
 
 
 const Navigation = ({ isLoaded }) => {
   const dispatch = useDispatch();
+  const [profileInfoOpen, setProfileInfoOpen] = useState(false)
   const user = useSelector(state => state.session.user ? state.session.user : false)
+  const sessionUser = useSelector(state => state.session.user);
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
   };
 
   if (!user) {
-    return <Redirect to='/login' />;
+    return <Redirect to='/' />;
   }
 
 
@@ -93,52 +94,46 @@ const Navigation = ({ isLoaded }) => {
             <img id='logo' src={logo} alt='logo' />
           </NavLink>
         </div>
-        <div className='navBarOptions'>
-          <div className='navBarAccionOptions'>
+        {user?.id && (
+          <div className='navBarOptions'>
+            <div className='navBarAccionOptions'>
 
-            <NavLink to='/' exact={true} className='active'>
-              <div id='petposts' className='optionclass'>
-                <GiNestBirds className='icon' />
-                <span>Home</span>
-              </div>
-            </NavLink>
-
-            {user?.account_type?.id !== 1 && (
-              <NavLink to='/images/add' exact={true} className='active'>
-                <div id='newpost' className='optionclass'>
-                  <FaPlus className='icon' />
-                  <span>Add</span>
+              <NavLink to='/' exact={true} className='active'>
+                <div id='petposts' className='optionclass'>
+                  <span>Home</span>
                 </div>
               </NavLink>
-            )}
-          </div>
 
-          {/* {user?.id && (
-            <div id='profile' className='optionclass' onMouseEnter={() => setPointToLineProfile('pointtoline')} onMouseLeave={() => setPointToLineProfile('')}>
-            <NavLink to={`/users/${user?.id}`} exact={true} className='active'>
-            {user.account_type.id === 1 ? <BsFillPersonFill className='icon' /> : <GiDogHouse className='icon' />}
-            </NavLink>
-            <span className='navBar-span'>Profile</span>
-            <div className={`point ${pointToLineProfile}`}></div>
+              {user?.account_type?.id !== 1 && (
+                <NavLink to='/images/add' exact={true} className='active'>
+                  <div id='newpost' className='optionclass'>
+                    <span>Add</span>
+                  </div>
+                </NavLink>
+              )}
             </div>
-          )} */}
 
-          <div className='navBarUserOptions'>
-            {user?.id && (
-              <div id='logout' className='optionclass'>
-                <MdLogout className='icon' onClick={logout} />
-                <span>Logout</span>
+            <div className='navBarUserOptions'>
+              {user?.id && (
+                <div id='logout' className='optionclass'>
+                  <MdLogout className='icon' onClick={logout} />
+                </div>
+              )}
+
+              <div id='home' className='optionclass'>
+                <FiUser className='icon' onClick={() => setProfileInfoOpen(!profileInfoOpen)} />
+              </div>
+            </div>
+            {profileInfoOpen && (
+              <div id='userOptionsDiv' className='dropdown-content'
+                onMouseLeave={() => setProfileInfoOpen(false)}
+                onClick={() => setProfileInfoOpen(false)}
+              >
+                <UserInfo sessionUser={sessionUser}/>
               </div>
             )}
-
-            <NavLink to='/about' exact={true} className='active'>
-              <div id='home' className='optionclass'>
-                <BsInfoSquare className='icon' />
-                <span>Profile</span>
-              </div>
-            </NavLink>
           </div>
-        </div>
+        )}
       </div>
     </nav>
   );

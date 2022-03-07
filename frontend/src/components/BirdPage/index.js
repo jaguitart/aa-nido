@@ -2,7 +2,7 @@ import React from "react";
 import { BiX, BiEditAlt, BiArrowBack } from "react-icons/bi";
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux"
-import { useParams, useHistory, NavLink } from 'react-router-dom';
+import { useParams, useHistory, NavLink, Redirect } from 'react-router-dom';
 import { getAllImages, removeBirdImage } from "../../store/imagesReducer";
 import { getComments } from "../../store/commentsReducer";
 import { addAComment, removeAComment } from "../../store/commentsReducer";
@@ -83,6 +83,11 @@ const BirdPage = ({ birdImages }) => {
     setEditPopUp(data)
     setOpenThisPopUp('')
   }
+
+  if (!sessionUser) return (
+    <Redirect to="/" />
+  );
+
 
   return (
     <div>

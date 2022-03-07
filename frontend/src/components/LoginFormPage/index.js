@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
+import logo from '../public/img/logo.png'
 import './LoginForm.css';
+
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -35,6 +37,15 @@ function LoginFormPage() {
 
   return (
     <div className='contanier'>
+      <nav>
+        <div className='navBarDiv'>
+          <div className='navLogo'>
+            <NavLink to='/' exact={true} className='active'>
+              <img id='logo' src={logo} alt='logo' />
+            </NavLink>
+          </div>
+        </div>
+      </nav>
       <div className="card">
         <div className="card-image">
           <h2 className="card-heading">
@@ -51,7 +62,7 @@ function LoginFormPage() {
               type="text"
               value={credential}
               onChange={(e) => setCredential(e.target.value)}
-              
+
             />
             <label className='input-label'>
               Username or Email
@@ -63,7 +74,7 @@ function LoginFormPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              
+
             />
             <label className='input-label'>
               Password
@@ -71,6 +82,7 @@ function LoginFormPage() {
           </div>
           <button type="submit" className='action-button' id='logInButton'>Log In</button>
           <button type="submit" onClick={handleDemo} className='action-button'>Demo User</button>
+          <p id="navlink-text">Not a Nido member? <NavLink id='navlink-signup' to={`/signup`}>Sign up here.</NavLink></p>
         </form>
       </div>
     </div>

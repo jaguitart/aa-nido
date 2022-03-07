@@ -2,9 +2,10 @@
 import React, { useState } from "react";
 import { CountryDropdown } from "react-country-region-selector";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import './SignupForm.css';
 import * as sessionActions from "../../store/session";
+import logo from '../public/img/logo.png'
 
 
 function SignupFormPage() {
@@ -33,7 +34,16 @@ function SignupFormPage() {
   };
 
   return (
-    <div className='contanier'>
+    <div className=''>
+      <nav>
+        <div className='navBarDiv'>
+          <div className='navLogo'>
+            <NavLink to='/' exact={true} className='active'>
+              <img id='logo' src={logo} alt='logo' />
+            </NavLink>
+          </div>
+        </div>
+      </nav>
       <div className="card">
         <div className="card-image">
           <h2 className="card-heading">
@@ -90,6 +100,7 @@ function SignupFormPage() {
           <div className='action'>
             <button type="submit" className='action-button'>Sign Up</button>
           </div>
+          <p id="navlink-text">Already a Nido member? <NavLink id='navlink-signup' to={`/login`}>Log in here.</NavLink></p>
         </form>
       </div>
     </div>

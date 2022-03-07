@@ -110,7 +110,8 @@ transition: 1s;
   display: flex;
   background-color: #3b3b3b;
   /* justify-content:space-between; */
-  min-height: 80px;
+  /* min-height: 60px; */
+  height: 60px;
 }
 
 .navLogo{
@@ -119,10 +120,11 @@ transition: 1s;
 }
 
 #logo {
-  min-width: 100px;
+  /* min-width: 100px; */
+  width: auto;
   margin-top: 10px;
-  height: 60px;
-  /* margin-left: 15px; */
+  height: 40px;
+  margin-left: 15px;
 }
 
 .navBarOptions {
@@ -147,7 +149,7 @@ transition: 1s;
   display: flex;
   font-weight: bolder;
   flex-direction: column;
-  min-width: 65px;
+  min-width: 45px;
   height: 100%;
   margin: auto;
   align-items: center;
@@ -165,7 +167,8 @@ transition: 1s;
 span {
   background-color: #3b3b3b;
   color: azure;
-  font-family:Helvetica, sans-serif
+  font-family:sans-serif;
+  font-style: normal;
 }
 
 .icon{
@@ -176,17 +179,31 @@ span {
   margin-bottom: 5px;
 }
 
-/* <div class="point"></div> */
-.point {
-  width: 6px;
-  height: 3px;
-  background: #000000;
-  border-radius: 3px;
-  transition: width 0.2s ease;
-  opacity: 0;
+#userOptionsDiv {
+  display: block;
+  position: absolute;
+  top: 60px;
+  right: 5%;
+  background-color: #ffffff;
+  width: 200px;
+  height: 100px;
+  border: 1px rgb(82, 82, 82) solid;
+  z-index: 1;
+  border-radius: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  text-decoration: none;
 }
 
-.pointtoline {
-  width: 50px;
-  opacity: 1;
+.textProfileDropDown {
+  padding: 0% 20px;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  text-decoration: none;
+}
+
+#profile-icon {
+  font-size: 15px;
+  margin-right: 10px;
 }

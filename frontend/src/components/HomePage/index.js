@@ -1,4 +1,5 @@
 import backgroundNido from '../HomePage/background.jpg'
+import logo from '../public/img/logo-white.png'
 import { useSelector } from 'react-redux';
 import { Redirect, NavLink } from "react-router-dom";
 import { FaGithubSquare, FaLinkedin } from "react-icons/fa";
@@ -19,9 +20,9 @@ const HomePage = () => {
           <div className="card2">
             <div className="card-image2">
               <h2 className="card-heading2">
-                Welcome to Nido
+                Welcome to
+              <img src={logo} id="home-logo" alt="homeBackground" />
               </h2>
-                <h3>Get started</h3>
             </div>
             <div className='action2'>
               <NavLink to={`/login`}>
@@ -35,7 +36,7 @@ const HomePage = () => {
               <a href="https://github.com/jaguitart" className='logoAnchor'>
                 <FaGithubSquare id='gitHub' />
               </a>
-              <a href="https://www.linkedin.com/in/joaquin-guitart-a950ab63/" className='logoAnchor'> 
+              <a href="https://www.linkedin.com/in/joaquin-guitart-a950ab63/" className='logoAnchor'>
                 <FaLinkedin id='linkedIn' />
               </a>
             </div>
