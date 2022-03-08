@@ -2,7 +2,7 @@
   font-family: Calibri, 'Trebuchet MS', sans-serif;
   font-weight: lighter;
   color: rgb(53, 53, 53);
-  margin: auto;
+  margin: auto !important;
   /* position: relative;
   left: 200px; */
   margin-bottom: 15px; 
