@@ -2,29 +2,18 @@
   font-family: Calibri, 'Trebuchet MS', sans-serif;
   font-weight: lighter;
   color: rgb(53, 53, 53);
-  margin: auto !important;
-  /* position: relative;
-  left: 200px; */
-  margin-bottom: 15px; 
-  margin-top: 40px;
-
-
+  margin: auto;
+  margin-bottom: 20px; 
+  margin-top: 45px;
   position: relative;
-  /* top: 100px; */
   margin: none;
   padding: none;
-  border: 0;
   font-family: Calibri, 'Trebuchet MS', sans-serif;
   font-weight: lighter;
   color: rgb(53, 53, 53);
-  /* position: relative; */
-  /* left: 10%; */
-  /* right: 0px; */
-  /* align-items: flex-start; */
   width: 500px;
   max-width: 80%;
-  margin-bottom: 15px; 
-  /* margin-top: 40px; */}
+}
 
 .imgContainer img {
   width: 100% !important;
