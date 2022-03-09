@@ -76,6 +76,7 @@ const AddBird = () => {
           <div className="input">
             <input
               type='file'
+              accept="image/*"
               className="input-field"
               onChange={updateFile}
               required
